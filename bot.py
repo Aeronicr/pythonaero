@@ -3,6 +3,7 @@ from discord.ext import commands
 extensions = ['second']
 from config import settings
 import sys, traceback
+import os
 
 initial_extensions = ['fun', 'animals', 'info']
 bot = commands.Bot(command_prefix = settings['prefix'])
@@ -21,5 +22,7 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=activity)
 
 bot.remove_command("help")
-bot.run(settings['token'])
+bot.run(os.environ(settings['token']))
+
+# bot.run(settings['token'])
 
