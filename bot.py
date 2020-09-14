@@ -6,8 +6,8 @@ import os
 
 
 default_prefixes = ['.']
-bot = commands.Bot(command_prefix=default_prefixes, description='A Rewrite Cog Example')
 initial_extensions = ['fun', 'animals', 'info']
+bot = commands.Bot(command_prefix=default_prefixes, description='A Rewrite Cog Example')
 if __name__ == '__main__':
     for extension in initial_extensions:
         try:
