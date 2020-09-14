@@ -3,6 +3,7 @@ from discord.ext import commands
 from config import settings
 import sys, traceback
 import os
+import request
 
 
 default_prefixes = ['.']
