@@ -6,8 +6,6 @@ import os
 
 
 initial_extensions = ['fun', 'animals', 'info']
-bot = commands.Bot(command_prefix=get_prefix, description='A Rewrite Cog Example')
-
 if __name__ == '__main__':
     for extension in initial_extensions:
         try:
@@ -16,6 +14,7 @@ if __name__ == '__main__':
             print(f'Помилка завантаження додатків {extension}.', file=sys.stderr)
             traceback.print_exc()
 
+bot = commands.Bot(command_prefix=get_prefix, description='A Rewrite Cog Example')
 def get_prefix(bot, message):
     """A callable Prefix for our bot. This could be edited to allow per server prefixes."""
 
