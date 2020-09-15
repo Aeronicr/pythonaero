@@ -1,13 +1,19 @@
 import discord
 from discord.ext import commands
-from config import settings
 import sys, traceback
 import os
 
-
+custom_prefixes = {}
 default_prefixes = ['.']
+async def determine_prefix(bot, message):
+    guild = message.guild
+    #Only allow custom prefixs in guild
+    if guild:
+        return custom_prefixes.get(guild.id, default_prefixes)
+    else:
+        return default_prefixes
 initial_extensions = ['fun', 'animals', 'info']
-bot = commands.Bot(command_prefix=default_prefixes, description='A Rewrite Cog Example')
+bot = commands.Bot(command_prefix = determine_prefix, description='A Rewrite Cog Example')
 if __name__ == '__main__':
     for extension in initial_extensions:
         try:
@@ -24,5 +30,13 @@ async def on_ready():
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
 
-# bot.run(settings['token'])
+
+@commands.command()
+@commands.guild_only()
+async def setprefix(self, ctx, *, prefixes=""):
+    #You'd obviously need to do some error checking here
+    #All I'm doing here is if prefixes is not passed then
+    #set it to default
+    custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
+    await ctx.send("Префікс бота успішно змінено!")
 
