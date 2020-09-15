@@ -10,8 +10,8 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True , aliases=['бан'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def ban (self, ctx, *, member:discord.Member=None, reason =None):
-        if member == None or member == ctx.message.author:
-            await ctx.channel.send("Ви не можете заблокувати себе")
+        if not ctx.message.author.server_permissions.administrator:
+            await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
             return
         if reason == None:
             reason = "причину блокування не вказано"
