@@ -72,7 +72,7 @@ class Info(commands.Cog, name="Info"):
         embed = discord.Embed(color=0xff9900, title=':satellite: Інформація про команди AeroBot v.0.1 alpha :satellite: ')
         embed.set_thumbnail(url="https://i.ibb.co/5cNn5cL/1.png")
         embed.add_field(name="Наявні команди:",
-                        value="команди, хто, лисичка, песик, котик, обійняти, погладити",
+                        value="команди, хто, лисичка, песик, котик, обійняти, погладити, оу",
                         inline=False)
         embed.add_field(name="Довідка по командах:", value="Для отримання детальних відомостей щодо команди "
                                                            "введіть **_**інфо після назви команди та префікса (=хто**_**інфо, наприклад)", inline=False)
