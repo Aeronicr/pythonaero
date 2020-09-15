@@ -27,7 +27,7 @@ async def on_ready():
     activity = discord.Game(name="Захоплення світу")
     await bot.change_presence(status=discord.Status.idle, activity=activity)
 
-@commands.command()
+@bot.command()
 @commands.guild_only()
 async def setprefix(ctx, *, prefixes=""):
     #You'd obviously need to do some error checking here
