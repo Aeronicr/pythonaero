@@ -28,12 +28,8 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=activity)
 
 @bot.command()
-@commands.guild_only()
-@commands.has_role("Admin")
+@commands.has_any_role("Батя","Славетний радник")
 async def setprefix(ctx, *, prefixes=""):
-    #You'd obviously need to do some error checking here
-    #All I'm doing here is if prefixes is not passed then
-    #set it to default
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")
 
