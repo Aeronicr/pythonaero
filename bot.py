@@ -29,6 +29,7 @@ async def on_ready():
 
 @bot.command()
 @commands.guild_only()
+@commands.has_role("Admin")
 async def setprefix(ctx, *, prefixes=""):
     #You'd obviously need to do some error checking here
     #All I'm doing here is if prefixes is not passed then
