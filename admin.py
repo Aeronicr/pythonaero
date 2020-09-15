@@ -9,14 +9,14 @@ class Admin(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True , aliases=['бан'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
-    async def ban (self, ctx, *, member:discord.Member = None, reason = None):
+    async def ban (self, ctx, member:discord.Member = None, reason = None):
         modRole = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole2 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
         if modRole.mention == member.top_role.mention or modRole2.mention == member.top_role.mention:
             await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
         else:
             if reason == None:
-                reason = "причину блокування не вказано"
+                reason = "порушення правил серверу"
             message = f"Вас заблоковано модератором на {ctx.guild.name} за {reason}"
             await member.send(message)
             await ctx.guild.ban(member, reason=reason)
