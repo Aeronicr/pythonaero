@@ -19,17 +19,18 @@ class Admin(commands.Cog, name="Info"):
         # await ctx.channel.send(roles)
         role2 = [role.mention for role in roles]
         # await ctx.channel.send(role2)
-        role3 = '@Славетний радник'
-        if role3 in role2== True:
-                await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
-                return
-        else:
-                if reason == None:
-                    reason = "причину блокування не вказано"
-                message = f"Вас заблоковано модератором на {ctx.guild.name} за {reason}"
-                await member.send(message)
-                await ctx.guild.ban(member, reason=reason)
-                await ctx.channel.send(f"{member} заблоковано!")
+        # role3 = '@Славетний радник'
+        await ctx.channel.send('@Славетний радник' in role2)
+        # if role3 in role2== True:
+        #         await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
+        #         return
+        # else:
+        #         if reason == None:
+        #             reason = "причину блокування не вказано"
+        #         message = f"Вас заблоковано модератором на {ctx.guild.name} за {reason}"
+        #         await member.send(message)
+        #         await ctx.guild.ban(member, reason=reason)
+        #         await ctx.channel.send(f"{member} заблоковано!")
 
         #     # member == None or member == ctx.message.author
         #     await ctx.channel.send("Ви не можете заблокувати себе")
