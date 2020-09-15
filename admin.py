@@ -15,8 +15,8 @@ class Admin(commands.Cog, name="Info"):
         # if member.top_role.mention == 'Славетний радник':
         #     await ctx.channel.send(member.top_role.mention)
         for role in ctx.guild.roles:
-            if role.name == 'Славетний помічник':
-                await ctx.channel.send('Ненавиджу цього скотиняку бота')
+            if role.name == 'Славетний радник':
+                await ctx.channel.send('Як ти мене бот дістав')
         #     # member == None or member == ctx.message.author
         #     await ctx.channel.send("Ви не можете заблокувати себе")
         #     return
