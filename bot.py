@@ -29,7 +29,7 @@ async def on_ready():
 
 @commands.command()
 @commands.guild_only()
-async def setprefix(self, ctx, *, prefixes=""):
+async def setprefix(ctx, *, prefixes=""):
     #You'd obviously need to do some error checking here
     #All I'm doing here is if prefixes is not passed then
     #set it to default
