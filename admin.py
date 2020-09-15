@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, CheckFailure
-import msg
 
 
 class Admin(commands.Cog, name="Info"):
