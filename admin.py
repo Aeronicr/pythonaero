@@ -15,37 +15,15 @@ class Admin(commands.Cog, name="Info"):
         # if member.top_role.mention == 'Славетний радник':
         #     await ctx.channel.send(member.top_role.mention)
         modRole = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
-        await ctx.send(modRole.mention)
-        await ctx.send(member.top_role.mention)
-        await ctx.send(modRole.mention)
         if modRole.mention == member.top_role.mention:
-            await ctx.send('Я нервую')
-        # await ctx.channel.send('@Славетний радник' in role2)
-        # if role3 in role2== True:
-        #         await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
-        #         return
-        # else:
-        #         if reason == None:
-        #             reason = "причину блокування не вказано"
-        #         message = f"Вас заблоковано модератором на {ctx.guild.name} за {reason}"
-        #         await member.send(message)
-        #         await ctx.guild.ban(member, reason=reason)
-        #         await ctx.channel.send(f"{member} заблоковано!")
-
-        #     # member == None or member == ctx.message.author
-        #     await ctx.channel.send("Ви не можете заблокувати себе")
-        #     return
-        # if reason == None:
-        #     reason = "причину блокування не вказано"
-        # message = f"Вас заблоковано модератором на {ctx.guild.name} за {reason}"
-        # await member.send(message)
-        # await ctx.guild.ban(member, reason=reason)
-        # await ctx.channel.send(f"{member} заблоковано!")
-
-    @ban.error
-    async def ban_error(self, error, ctx):
-        if isinstance(error, CheckFailure):
-            await ctx.channel.send("Ви не можете заблокувати інших модераторів")
+            await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
+        else:
+            if reason == None:
+                reason = "причину блокування не вказано"
+            message = f"Вас заблоковано модератором на {ctx.guild.name} за {reason}"
+            await member.send(message)
+            await ctx.guild.ban(member, reason=reason)
+            await ctx.channel.send(f"{member} заблоковано!")
 
 def setup(bot):
     bot.add_cog(Admin(bot))
