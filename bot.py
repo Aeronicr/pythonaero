@@ -27,10 +27,6 @@ async def on_ready():
     activity = discord.Game(name="Захоплення світу")
     await bot.change_presence(status=discord.Status.idle, activity=activity)
 
-bot.remove_command("help")
-bot.run(os.environ['DISCORD_TOKEN'])
-
-
 @commands.command()
 @commands.guild_only()
 async def setprefix(self, ctx, *, prefixes=""):
@@ -39,4 +35,9 @@ async def setprefix(self, ctx, *, prefixes=""):
     #set it to default
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")
+
+bot.remove_command("help")
+bot.run(os.environ['DISCORD_TOKEN'])
+
+
 
