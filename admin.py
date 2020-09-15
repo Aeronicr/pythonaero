@@ -9,7 +9,7 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True , aliases=['бан'])
     @commands.has_any_role("Батя","Славетний радник")
     async def ban (self, ctx, *, member:discord.Member=None, reason =None):
-        if member == None or member == ctx.message.author or ctx.message.author.server_permissions.administrator:
+        if member == None or member == ctx.message.author:
             await ctx.channel.send("Ви не можете забанити себе або інших модераторів")
             return
         if reason == None:
