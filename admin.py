@@ -16,6 +16,8 @@ class Admin(commands.Cog, name="Info"):
         #     await ctx.channel.send(member.top_role.mention)
         modRole = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         await ctx.send(modRole.mention)
+        if modRole.mention == "Славетний радник":
+            await ctx.channel.send("Якщо ти не працюватимеш я тебе заріжу, скотиняка")
         # await ctx.channel.send('@Славетний радник' in role2)
         # if role3 in role2== True:
         #         await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
