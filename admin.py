@@ -16,7 +16,7 @@ class Admin(commands.Cog, name="Info"):
         #     await ctx.channel.send(member.top_role.mention)
         member = ctx.author if not member else member
         roles = [role for role in member.roles]
-        await ctx.channel.send(roles)
+        # await ctx.channel.send(roles)
         role2 = [role.mention for role in roles]
         # await ctx.channel.send(role2)
         role3 = 'Славетний радник' or 'Батя'
