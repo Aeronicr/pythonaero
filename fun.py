@@ -64,6 +64,29 @@ class Fun(commands.Cog, name="Fun"):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
+    #--------------------------------------------------------------------#
+
+    @commands.command(pass_context=True, aliases=['май_інфо', 'ou_info'])
+    async def оу_інфо(self, ctx):
+        embed = discord.Embed(color=0xff9900, title=':satellite: Інформація про команду "оу" :satellite: ')
+        embed.set_thumbnail(url="https://i.ibb.co/5cNn5cL/1.png")
+        embed.add_field(name="Опис команди:",
+                        value="Ця команда виводить зображення 'оу май' на екран користувача. За допомогою "
+                              "цієї команди користувачі можуть висловити своє здивувавння",
+                        inline=False)
+        embed.add_field(name="Синтаксис команди:", value="<префікс>оу", inline=False)
+        embed.add_field(name="Альтернативний виклик команди:", value="май, ou", inline=False)
+        embed.add_field(name="Дозволені канали:", value="#славетні-боги, #флудильня", inline=False)
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
+    @commands.command(pass_context = True , aliases=['май', 'ou'])
+    async def оу(self, ctx):
+        embed = discord.Embed(color=0xff9900)
+        embed.set_image(url='https://i.ibb.co/Vt5rkZd/image.png')
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
 
 
 def setup(bot):
