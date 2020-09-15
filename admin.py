@@ -14,11 +14,11 @@ class Admin(commands.Cog, name="Info"):
         # await ctx.channel.send(member.top_role.mention)
         # if member.top_role.mention == 'Славетний радник':
         #     await ctx.channel.send(member.top_role.mention)
-        for role in ctx.guild.roles:
-            if member.role.name == 'Славетний радник' or 'Батя':
+        roles = [role for role in member.roles]
+        if roles == 'Славетний радник' or 'Батя':
                 await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
                 return
-            else:
+        else:
                 if reason == None:
                     reason = "причину блокування не вказано"
                 message = f"Вас заблоковано модератором на {ctx.guild.name} за {reason}"
