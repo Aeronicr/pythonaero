@@ -16,7 +16,10 @@ class Admin(commands.Cog, name="Info"):
         #     await ctx.channel.send(member.top_role.mention)
         member = ctx.author if not member else member
         roles = [role for role in member.roles]
-        if (role.mention for role in roles) == 'Славетний радник' or 'Батя':
+        await ctx.channel.send(roles)
+        role2 = [role.mention for role in roles]
+        await ctx.channel.send(role2)
+        if role2 == 'Славетний радник' or 'Батя':
                 await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
                 return
         else:
