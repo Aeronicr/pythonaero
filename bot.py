@@ -27,7 +27,7 @@ async def on_ready():
     activity = discord.Game(name="Захоплення світу")
     await bot.change_presence(status=discord.Status.idle, activity=activity)
 
-@bot.command()
+@bot.command(aliases=['префікс'])
 @commands.has_any_role("Батя","Славетний радник")
 async def setprefix(ctx, *, prefixes=""):
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
