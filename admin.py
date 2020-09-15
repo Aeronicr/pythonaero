@@ -12,8 +12,8 @@ class Admin(commands.Cog, name="Info"):
     async def ban (self, ctx, *, member:discord.Member = None, reason = None):
         roles = [role for role in member.roles]
         await ctx.channel.send(member.top_role.mention)
-        if member.top_role.mention == '@Славетний радник':
-            await ctx.channel.send("Ok")
+        if member.top_role.mention == 'Славетний радник':
+            await ctx.channel.send(member.top_role.mention)
         # if ctx.author.id == 339372925301948427:
         #     # member == None or member == ctx.message.author
         #     await ctx.channel.send("Ви не можете заблокувати себе")
