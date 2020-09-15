@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import sys, traceback
 import os
+from discord.ext.commands import has_permissions
 
 custom_prefixes = {}
 default_prefixes = ['.']
@@ -28,7 +29,7 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=activity)
 
 @bot.command(aliases=['префікс'])
-@commands.has_any_role("Батя","Славетний радник")
+@has_permissions(administrator=True, manage_messages=True, manage_roles=True)
 async def setprefix(ctx, *, prefixes=""):
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")

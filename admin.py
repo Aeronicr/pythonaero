@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord.ext.commands import has_permissions, CheckFailure
 
 
 class Admin(commands.Cog, name="Info"):
@@ -7,17 +8,22 @@ class Admin(commands.Cog, name="Info"):
         self.bot = bot
 
     @commands.command(pass_context = True , aliases=['бан'])
-    @commands.has_any_role("Батя","Славетний радник")
+    @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def ban (self, ctx, *, member:discord.Member=None, reason =None):
         if member == None or member == ctx.message.author:
-            await ctx.channel.send("Ви не можете забанити себе або інших модераторів")
+            await ctx.channel.send("Ви не можете заблокувати себе")
             return
         if reason == None:
-            reason = "причину бану не вказано"
-        message = f"Ви забанили користувача {ctx.guild.name} за {reason}"
+            reason = "причину блокування не вказано"
+        message = f"Вас заблоковано модератором на {ctx.guild.name} за {reason}"
         await member.send(message)
         await ctx.guild.ban(member, reason=reason)
-        await ctx.channel.send(f"{member} забанено!")
+        await ctx.channel.send(f"{member} заблоковано!")
+
+    @ban.error
+    async def ban_error(self, error, ctx):
+        if isinstance(error, CheckFailure):
+            await ctx.channel.send("Ви не можете заблокувати інших модераторів")
 
 def setup(bot):
     bot.add_cog(Admin(bot))
