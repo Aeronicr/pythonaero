@@ -49,14 +49,15 @@ class Admin(commands.Cog, name="Info"):
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             await ctx.channel.send(f"Користувача {member} заглушено!")
 
-    @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
-    @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
-    async def unmute (self, ctx, member:discord.Member = None, *,role: discord.Role):
-        modRole9 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
-        if modRole9.mention == member.top_role.mention:
-            await role.delete()
-        else:
-            await ctx.channel.send(f"Користувач {member} не є заглушеним на сервері")
+    @commands.command(pass_context=True, aliases=['del', 'очистити'])
+    async def clear(self, ctx, amount=1):
+        channel = ctx.message.channel
+        messages = []
+        async for message in channel.history(limit=amount):
+                messages.append(message)
+
+        await channel.delete_messages(messages)
+        await ctx.send('Повідомлення видалено.')
 
 def setup(bot):
     bot.add_cog(Admin(bot))
