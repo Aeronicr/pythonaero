@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, CheckFailure
+from discord.utils import get
 
 
 class Admin(commands.Cog, name="Info"):
@@ -45,8 +46,7 @@ class Admin(commands.Cog, name="Info"):
         if modRole3.mention == member.top_role.mention or modRole4.mention == member.top_role.mention:
             await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
         else:
-            role = discord.utils.get(member.server.roles, name='Троляка')
-            await ctx.bot.add_roles(member, role)
+            await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             await ctx.channel.send(f"Користувача {member} заглушено!")
 
 def setup(bot):
