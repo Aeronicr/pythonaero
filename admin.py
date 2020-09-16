@@ -20,7 +20,22 @@ class Admin(commands.Cog, name="Info"):
             message = f"Вас заблоковано модератором на {ctx.guild.name} за {reason}"
             await member.send(message)
             await ctx.guild.ban(member, reason=reason)
-            await ctx.channel.send(f"{member} заблоковано!")
+            await ctx.channel.send(f"Користувача {member} заблоковано!")
+
+    @commands.command(pass_context = True , aliases=['кік', 'вигнати'])
+    @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
+    async def kick (self, ctx, member:discord.Member = None, reason = None):
+        modRole3 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
+        modRole4 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
+        if modRole3.mention == member.top_role.mention or modRole4.mention == member.top_role.mention:
+            await ctx.channel.send("Ви не можете вигнати себе та інших модераторів")
+        else:
+            if reason == None:
+                reason = "порушення правил серверу"
+            message = f"Вас вигнали із серверу {ctx.guild.name} за {reason}"
+            await member.send(message)
+            await ctx.guild.ban(member, reason=reason)
+            await ctx.channel.send(f"Користувача {member} виключено із серверу!")
 
 def setup(bot):
     bot.add_cog(Admin(bot))
