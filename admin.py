@@ -41,13 +41,22 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def mute (self, ctx, member:discord.Member = None):
-        modRole3 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
-        modRole4 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
-        if modRole3.mention == member.top_role.mention or modRole4.mention == member.top_role.mention:
+        modRole5 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
+        modRole6 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
+        if modRole5.mention == member.top_role.mention or modRole6.mention == member.top_role.mention:
             await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
         else:
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             await ctx.channel.send(f"Користувача {member} заглушено!")
+
+    @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
+    @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
+    async def unmute (self, ctx, member:discord.Member = None):
+        modRole9 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
+        if modRole9.mention == member.top_role.mention:
+            await member.delete_role(discord.utils.get(member.guild.roles, name='Троляка'))
+        else:
+            await ctx.channel.send(f"Користувач {member} не є заглушеним на сервері")
 
 def setup(bot):
     bot.add_cog(Admin(bot))
