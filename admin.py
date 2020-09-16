@@ -37,5 +37,17 @@ class Admin(commands.Cog, name="Info"):
             await ctx.guild.ban(member, reason=reason)
             await ctx.channel.send(f"Користувача {member} виключено із серверу!")
 
+    @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
+    @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
+    async def mute (self, ctx, member:discord.Member = None):
+        modRole3 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
+        modRole4 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
+        if modRole3.mention == member.top_role.mention or modRole4.mention == member.top_role.mention:
+            await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
+        else:
+            role = discord.utils.get(member.server.roles, name='Троляка')
+            await ctx.bot.add_roles(member, role)
+            await ctx.channel.send(f"Користувача {member} заглушено!")
+
 def setup(bot):
     bot.add_cog(Admin(bot))
