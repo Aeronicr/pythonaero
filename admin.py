@@ -58,6 +58,7 @@ class Admin(commands.Cog, name="Info"):
 
         await channel.delete_messages(messages)
         await ctx.send('Повідомлення видалено.')
+        await ctx.message.delete()
 
 def setup(bot):
     bot.add_cog(Admin(bot))
