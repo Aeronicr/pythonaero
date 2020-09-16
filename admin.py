@@ -53,7 +53,7 @@ class Admin(commands.Cog, name="Info"):
     async def clear(self, ctx, amount):
         channel = ctx.message.channel
         messages = []
-        amount = int(number)
+        amount = int(amount)
         async for message in channel.history(limit=amount):
                 messages.append(message)
 
