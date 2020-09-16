@@ -50,9 +50,10 @@ class Admin(commands.Cog, name="Info"):
             await ctx.channel.send(f"Користувача {member} заглушено!")
 
     @commands.command(pass_context=True, aliases=['del', 'очистити'])
-    async def clear(self, ctx, amount=None):
+    async def clear(self, ctx, amount):
         channel = ctx.message.channel
         messages = []
+        amount = int(number)
         async for message in channel.history(limit=amount):
                 messages.append(message)
 
