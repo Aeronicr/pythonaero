@@ -57,9 +57,9 @@ class Admin(commands.Cog, name="Info"):
         async for message in channel.history(limit=amount):
                 messages.append(message)
 
-        await ctx.message.delete()
         await channel.delete_messages(messages)
         await ctx.send('Повідомлення видалено.')
+        await ctx.message.delete()
 
 def setup(bot):
     bot.add_cog(Admin(bot))
