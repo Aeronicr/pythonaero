@@ -51,10 +51,10 @@ class Admin(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
-    async def unmute (self, ctx, member:discord.Member = None):
+    async def unmute (self, ctx, member:discord.Member = None, *,role: discord.Role):
         modRole9 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
         if modRole9.mention == member.top_role.mention:
-            await member.delete_role(discord.utils.get(member.guild.roles, name='Троляка'))
+            await role.delete()
         else:
             await ctx.channel.send(f"Користувач {member} не є заглушеним на сервері")
 
