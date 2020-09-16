@@ -1,3 +1,9 @@
 discord
 mysql-connector
 requests==2.21.0
+pip
+youtube_dl
+discord.py[voice] ~= 1.4.0
+ffmpeg
+colorlog
+PyNaCl
