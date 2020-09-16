@@ -50,7 +50,7 @@ class Admin(commands.Cog, name="Info"):
             await ctx.channel.send(f"Користувача {member} заглушено!")
 
     @commands.command(pass_context=True, aliases=['del', 'очистити'])
-    async def clear(self, ctx, amount=2):
+    async def clear(self, ctx, amount=None):
         channel = ctx.message.channel
         messages = []
         async for message in channel.history(limit=amount):
@@ -58,7 +58,6 @@ class Admin(commands.Cog, name="Info"):
 
         await channel.delete_messages(messages)
         await ctx.send('Повідомлення видалено.')
-        await ctx.message.delete()
 
 def setup(bot):
     bot.add_cog(Admin(bot))
