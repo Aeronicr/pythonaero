@@ -32,18 +32,14 @@ async def on_ready():
 
     channel = bot.get_channel(755473910115336192)
     Text= "Якщо ти пипаєш у борделі то став :slavetnyi_kreygasm:"
-    Moji = await client.send_message(channel, Text)
-    await client.add_reaction(Moji, emoji=':slavetnyi_kreygasm:')
+    Moji = await bot.send_message(channel, Text)
+    await bot.add_reaction(Moji, emoji=':slavetnyi_kreygasm:')
 
 @bot.event
-@client.event
 async def on_reaction_add(reaction, user):
-    Channel = client.get_channel(755473910115336192)
-    if reaction.message.channel.id != Channel
-    return
-    if reaction.emoji == "":
-      Role = discord.utils.get(user.server.roles, name="Еротика")
-      await client.add_roles(user, Role)
+    Channel = bot.get_channel(755473910115336192)
+    Role = discord.utils.get(user.server.roles, name="Еротика")
+    await bot.add_roles(user, Role)
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
