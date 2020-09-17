@@ -30,18 +30,19 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("AeroBot долучився до серверу та готовий працювати!")
 
-    channel2 = bot.get_channel(755473910115336192)
+    channel = bot.get_channel(755473910115336192)
     Text= "Якщо ти пипаєш у борделі то став :slavetnyi_kreygasm:"
-    Moji = await client.send_message(channel2, Text)
+    Moji = await client.send_message(channel, Text)
     await client.add_reaction(Moji, emoji=':slavetnyi_kreygasm:')
 
 @bot.event
+@client.event
 async def on_reaction_add(reaction, user):
-    channel3 = client.get_channel('731885002668638242')
-    if reaction.message.channel.id != channel3
+    Channel = client.get_channel(755473910115336192)
+    if reaction.message.channel.id != Channel
     return
-    if reaction.emoji == ":slavetnyi_kreygasm:":
-      Role = discord.utils.get(user.server.roles, name="bot maker")
+    if reaction.emoji == "":
+      Role = discord.utils.get(user.server.roles, name="Еротика")
       await client.add_roles(user, Role)
 
 @bot.command(aliases=['префікс'])
