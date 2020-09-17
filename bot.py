@@ -26,9 +26,9 @@ if __name__ == '__main__':
 @bot.event
 async def on_ready():
     activity = discord.Game(name="Захоплення світу")
-    channel = bot.get_channel(731887251482607677)
+    channel = bot.get_channel(731885002668638242)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
-    await channel.send("AeroBot доєднався до серверу!")
+    await channel.send("AeroBot доєднався до серверу та готовий працювати!")
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
