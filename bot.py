@@ -24,7 +24,7 @@ if __name__ == '__main__':
             traceback.print_exc()
 
 @bot.event
-async def on_ready():
+async def on_ready(ctx):
     activity = discord.Game(name="Захоплення світу")
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await ctx.send("AeroBot долучився до серверу та готовий працювати!")
