@@ -28,7 +28,7 @@ async def on_ready():
     activity = discord.Game(name="Захоплення світу")
     channel = bot.get_channel(755473910115336192)
     Text= "Тест"
-    Moji = await bot.send_message(channel, Text)
+    Moji = await message.channel.send(channel, Text)
     await bot.add_reaction(Moji, emoji='slavetnyi_pogchamp')
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("AeroBot долучився до серверу та готовий працювати!")
