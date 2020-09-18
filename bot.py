@@ -24,21 +24,11 @@ if __name__ == '__main__':
             traceback.print_exc()
 
 @bot.event
-async def on_ready():
+async def on_ready(ctx):
     activity = discord.Game(name="Захоплення світу")
-    channel = bot.get_channel(755473910115336192)
-    Text= "Тест"
-    Moji = await message.channel.send(channel, Text)
-    await bot.add_reaction(Moji, emoji='slavetnyi_pogchamp')
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("AeroBot долучився до серверу та готовий працювати!")
 
-@bot.event
-async def on_reaction_add(reaction, user):
-    channel = bot.get_channel(755473910115336192)
-    if reaction.emoji == "slavetnyi_pogchamp":
-      Role = discord.utils.get(user.server.roles, name="Еротика")
-      await bot.add_roles(user, Role)
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
