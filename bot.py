@@ -29,17 +29,22 @@ async def on_ready():
     channel = bot.get_channel(755473910115336192)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("AeroBot долучився до серверу та готовий працювати!")
-    role = discord.utils.get(user.server.roles, name="Еротика")
-    message = await bot.send_message(channel, "Постав реакцію :slavetnyi_pickle_rick:, якщо пипаєш у борделі")
-    while True:
-        reaction = await bot.wait_for_reaction(emoji=":slavetnyi_pickle_rick: ", message=message)
-        await bot.add_roles(reaction.message.author, role)
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
 async def setprefix(ctx, *, prefixes=""):
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")
+
+@client.event
+async def on_raw_reaction_add(payload):
+    if massage_id == 756436513813823509:
+        guild_id = payload.guild_id
+        guild = discord.utils.find(lambda g: g.id == guild_id, client.guilds)
+
+        if payload.emoji.name == 'slavetnyi_kreygasm':
+            role = discord.utils.get(guild.roles, name = 'Еротика')
+
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
