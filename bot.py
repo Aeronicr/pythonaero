@@ -28,14 +28,14 @@ async def on_ready():
     activity = discord.Game(name="Захоплення світу")
     channel = bot.get_channel(755473910115336192)
     Text= "Тест"
-    Moji = await bot.send_message(Channel, Text)
+    Moji = await bot.send_message(channel, Text)
     await bot.add_reaction(Moji, emoji='slavetnyi_pogchamp')
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("AeroBot долучився до серверу та готовий працювати!")
 
 @bot.event
 async def on_reaction_add(reaction, user):
-    Channel = bot.get_channel(755473910115336192)
+    channel = bot.get_channel(755473910115336192)
     if reaction.emoji == "slavetnyi_pogchamp":
       Role = discord.utils.get(user.server.roles, name="Еротика")
       await bot.add_roles(user, Role)
