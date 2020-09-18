@@ -10,7 +10,7 @@ class Animals(commands.Cog, name="Animals"):
 
     @commands.command(pass_context = True , aliases=['fox', 'лис'])
     async def лисичка(self, ctx):
-        response = requests.get('https://some-random-api.ml/img/fox')
+        response = requests.get('https://api.deepai.org/api/nsfw-detector')
         json_data = json.loads(response.text)
 
         embed = discord.Embed(color=0xff9900)
