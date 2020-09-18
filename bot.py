@@ -27,19 +27,25 @@ if __name__ == '__main__':
 async def on_ready():
     activity = discord.Game(name="Захоплення світу")
     channel = bot.get_channel(755473910115336192)
-    role = discord.utils.get(user.server.roles, name="Еротика")
-    message = await bot.send_message(channel, "Відреагуй, якщо пипаєш")
-    while True:
-        reaction = await bot.wait_for_reaction(emoji="slavetnyi_kreygasm", message=message)
-        await bot.add_roles(reaction.message.author, role)
+    Text= "Тест"
+    Moji = await bot.send_message(Channel, Text)
+    await bot.add_reaction(Moji, emoji='slavetnyi_pogchamp')
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("AeroBot долучився до серверу та готовий працювати!")
+
+@bot.event
+async def on_reaction_add(reaction, user):
+    Channel = bot.get_channel(755473910115336192)
+    if reaction.emoji == "slavetnyi_pogchamp":
+      Role = discord.utils.get(user.server.roles, name="Еротика")
+      await bot.add_roles(user, Role)
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
 async def setprefix(ctx, *, prefixes=""):
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")
+
 
 
 
