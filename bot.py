@@ -27,6 +27,11 @@ if __name__ == '__main__':
 async def on_ready():
     activity = discord.Game(name="Захоплення світу")
     channel = bot.get_channel(755473910115336192)
+    role = discord.utils.get(user.server.roles, name="Еротика")
+    message = await bot.send_message(channel, "Відреагуй, якщо пипаєш")
+    while True:
+        reaction = await bot.wait_for_reaction(emoji="slavetnyi_kreygasm", message=message)
+        await bot.add_roles(reaction.message.author, role)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("AeroBot долучився до серверу та готовий працювати!")
 
@@ -36,14 +41,6 @@ async def setprefix(ctx, *, prefixes=""):
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")
 
-@bot.event
-async def on_reaction_add(reaction, user):
-  ChID = '755473910115336192'
-  if reaction.message.channel.id != ChID:
-    return
-  if reaction.emoji == "slavetnyi_kreygasm":
-    role = discord.utils.get(user.server.roles, name="Еротика")
-    await bot.add_roles(user, role)
 
 
 bot.remove_command("help")
