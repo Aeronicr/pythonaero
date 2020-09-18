@@ -36,7 +36,7 @@ async def setprefix(ctx, *, prefixes=""):
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")
 
-@client.event
+@bot.event
 async def on_raw_reaction_add(payload):
     if massage_id == 756436513813823509:
         guild_id = payload.guild_id
