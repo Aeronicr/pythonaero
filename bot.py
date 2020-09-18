@@ -43,7 +43,7 @@ async def on_reaction_add(reaction, user):
     return
   if reaction.emoji == ":slavetnyi_kreygasm:":
     role = discord.utils.get(user.server.roles, name="Еротика")
-    await client.add_roles(user, role)
+    await bot.add_roles(user, role)
 
 
 bot.remove_command("help")
