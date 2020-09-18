@@ -38,9 +38,10 @@ async def setprefix(ctx, *, prefixes=""):
 
 @bot.event
 async def on_raw_reaction_add(payload):
+    message_id = payload.message_id
     if massage_id == 756436513813823509:
         guild_id = payload.guild_id
-        guild = discord.utils.find(lambda g: g.id == guild_id, client.guilds)
+        guild = discord.utils.find(lambda g: g.id == guild_id, bot.guilds)
 
         if payload.emoji.name == 'slavetnyi_kreygasm':
             role = discord.utils.get(guild.roles, name = 'Еротика')
