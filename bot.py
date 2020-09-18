@@ -41,7 +41,7 @@ async def on_reaction_add(reaction, user):
   ChID = '755473910115336192'
   if reaction.message.channel.id != ChID:
     return
-  if reaction.emoji == ":slavetnyi_kreygasm:":
+  if reaction.emoji == "slavetnyi_kreygasm":
     role = discord.utils.get(user.server.roles, name="Еротика")
     await bot.add_roles(user, role)
 
