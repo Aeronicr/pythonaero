@@ -37,14 +37,13 @@ async def setprefix(ctx, *, prefixes=""):
     await ctx.send("Префікс бота успішно змінено!")
 
 @bot.event
-async def on_raw_reaction_add(payload):
-    message_id = payload.message_id
-    if message_id == 756436513813823509:
-        guild_id = payload.guild_id
-        guild = discord.utils.find(lambda g: g.id == guild_id, bot.guilds)
-
-        if payload.emoji.name == 'slavetnyi_kreygasm':
-            role = discord.utils.get(guild.roles, name = 'Еротика')
+async def on_reaction_add(reaction, user):
+  ChID = '755473910115336192'
+  if reaction.message.channel.id != ChID:
+    return
+  if reaction.emoji == ":slavetnyi_kreygasm:":
+    role = discord.utils.get(user.server.roles, name="Еротика")
+    await client.add_roles(user, role)
 
 
 bot.remove_command("help")
