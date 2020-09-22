@@ -54,13 +54,23 @@ class Info(commands.Cog, name="Info"):
 
     @commands.command()
     async def статистика(self, ctx):
-        member_count = 0;
-
+        name = ctx.guild.name
+        description = ctx.guild.description
+        owner = ctx.guild.owner
+        id = ctx.guild.id
+        region = ctx.guild.region
+        member_count = 0
         for member in ctx.guild.members:
             member_count += 1
         true_member_count = len([m for m in ctx.guild.members if not m.bot])
         bot_count = member_count - true_member_count
         embed = discord.Embed(color=0xff9900, title='Статистика серверу')
+        embed.set_thumbnail(url=guild.icon_url)
+        embed.add_field(name="Назва серверу: ", value=name)
+        embed.add_field(name="Опис серверу: ", value=description)
+        embed.add_field(name="Власник серверу: ", value=owner)
+        embed.add_field(name="ID серверу: ", value=id)
+        embed.add_field(name="Регіон серверу: ", value=region)
         embed.add_field(name="Кількість усіх учасників серверу: ", value=member_count)
         embed.add_field(name="Кількість учасників: ", value=true_member_count)
         embed.add_field(name="Кількість ботів: ", value=bot_count)
