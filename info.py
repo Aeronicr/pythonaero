@@ -74,7 +74,7 @@ class Info(commands.Cog, name="Info"):
         embed.add_field(name=":page_with_curl: Кількість усіх учасників серверу: ", value=member_count)
         embed.add_field(name=":page_facing_up: Кількість учасників: ", value=true_member_count)
         embed.add_field(name=":bookmark_tabs: Кількість ботів: ", value=bot_count, inline=Fals)
-        embed.add_field(name="Ролі серверу", value=roles
+        embed.add_field(name="Ролі серверу", value=roles)
         embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed)
         await ctx.message.delete()
