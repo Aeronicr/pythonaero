@@ -75,7 +75,7 @@ class Info(commands.Cog, name="Info"):
         embed.add_field(name=":statue_of_liberty: Регіон серверу: ", value=region, inline=False)
         embed.add_field(name=":page_with_curl: Кількість усіх учасників серверу: ", value=member_count)
         embed.add_field(name=":page_facing_up: Кількість учасників: ", value=true_member_count)
-        embed.add_field(name=":bookmark_tabs: Кількість ботів: ", value=bot_count, inline=False)
+        embed.add_field(name=":bookmark_tabs: Кількість ботів: ", value=bot_count)
         embed.add_field(name=":ticket: Кількість усіх каналів: ", value=total_channels)
         embed.add_field(name=":speaker: Голосових каналів: ", value=total_voice_channels)
         embed.add_field(name=":keyboard: Текстових каналів: ", value=total_text_channels)
