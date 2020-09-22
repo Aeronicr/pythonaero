@@ -52,8 +52,8 @@ class Info(commands.Cog, name="Info"):
         await ctx.message.delete()
 
 
-    @commands.command()
-    async def статистика(self, ctx):
+    @commands.command(pass_context=True, aliases=['server'])
+    async def сервер(self, ctx):
         name = ctx.guild.name
         owner = ctx.guild.owner
         id = ctx.guild.id
@@ -64,15 +64,15 @@ class Info(commands.Cog, name="Info"):
             member_count += 1
         true_member_count = len([m for m in ctx.guild.members if not m.bot])
         bot_count = member_count - true_member_count
-        embed = discord.Embed(color=0xff9900, title='Статистика серверу')
+        embed = discord.Embed(color=0xff9900, title='Інформація про сервер')
         embed.set_thumbnail(url=icon)
-        embed.add_field(name="Назва серверу: ", value=name)
-        embed.add_field(name="Власник серверу: ", value=owner)
-        embed.add_field(name="ID серверу: ", value=id)
-        embed.add_field(name="Регіон серверу: ", value=region)
-        embed.add_field(name="Кількість усіх учасників серверу: ", value=member_count)
-        embed.add_field(name="Кількість учасників: ", value=true_member_count)
-        embed.add_field(name="Кількість ботів: ", value=bot_count)
+        embed.add_field(name=":bank: Назва серверу: ", value=name, inline=False)
+        embed.add_field(name=":detective: Власник серверу: ", value=owner, inline=False)
+        embed.add_field(name=":id: серверу: ", value=id, inline=False)
+        embed.add_field(name=":statue_of_liberty: Регіон серверу: ", value=region, inline=False)
+        embed.add_field(name=":page_with_curl: Кількість усіх учасників серверу: ", value=member_count, inline=False)
+        embed.add_field(name=":page_facing_up: Кількість учасників: ", value=true_member_count, inline=False)
+        embed.add_field(name=":bookmark_tabs: Кількість ботів: ", value=bot_count, inline=False)
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
