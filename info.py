@@ -59,6 +59,7 @@ class Info(commands.Cog, name="Info"):
         id = ctx.guild.id
         region = ctx.guild.region
         icon = ctx.guild.icon_url
+        roles = ctx.guild.roles
         member_count = 0
         for member in ctx.guild.members:
             member_count += 1
@@ -72,7 +73,9 @@ class Info(commands.Cog, name="Info"):
         embed.add_field(name=":statue_of_liberty: Регіон серверу: ", value=region, inline=False)
         embed.add_field(name=":page_with_curl: Кількість усіх учасників серверу: ", value=member_count)
         embed.add_field(name=":page_facing_up: Кількість учасників: ", value=true_member_count)
-        embed.add_field(name=":bookmark_tabs: Кількість ботів: ", value=bot_count)
+        embed.add_field(name=":bookmark_tabs: Кількість ботів: ", value=bot_count, inline=Fals)
+        embed.add_field(name="Ролі серверу", value=roles
+        embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
