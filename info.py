@@ -59,7 +59,9 @@ class Info(commands.Cog, name="Info"):
         id = ctx.guild.id
         region = ctx.guild.region
         icon = ctx.guild.icon_url
-        roles = ctx.guild.roles
+        total_text_channels = len(guild.text_channels)
+        total_voice_channels = len(guild.voice_channels)
+        total_channels = total_text_channels  + total_voice_channels
         member_count = 0
         for member in ctx.guild.members:
             member_count += 1
@@ -74,7 +76,9 @@ class Info(commands.Cog, name="Info"):
         embed.add_field(name=":page_with_curl: Кількість усіх учасників серверу: ", value=member_count)
         embed.add_field(name=":page_facing_up: Кількість учасників: ", value=true_member_count)
         embed.add_field(name=":bookmark_tabs: Кількість ботів: ", value=bot_count, inline=False)
-        embed.add_field(name="Ролі серверу", value=roles)
+        embed.add_field(name=":ticket: Кількість усіх каналів: ", value=total_channels)
+        embed.add_field(name=":speaker: Голосових каналів: ", value=total_voice_channels)
+        embed.add_field(name=":keyboard: Текстових каналів: ", value=total_text_channels)
         embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed)
         await ctx.message.delete()
