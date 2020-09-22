@@ -65,7 +65,7 @@ class Info(commands.Cog, name="Info"):
         true_member_count = len([m for m in ctx.guild.members if not m.bot])
         bot_count = member_count - true_member_count
         embed = discord.Embed(color=0xff9900, title='Статистика серверу')
-        embed.set_thumbnail(url=guild.icon_url)
+        # embed.set_thumbnail(url=guild.icon_url)
         embed.add_field(name="Назва серверу: ", value=name)
         embed.add_field(name="Опис серверу: ", value=description)
         embed.add_field(name="Власник серверу: ", value=owner)
