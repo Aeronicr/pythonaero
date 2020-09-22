@@ -59,8 +59,8 @@ class Info(commands.Cog, name="Info"):
         id = ctx.guild.id
         region = ctx.guild.region
         icon = ctx.guild.icon_url
-        total_text_channels = len(guild.text_channels)
-        total_voice_channels = len(guild.voice_channels)
+        total_text_channels = len(ctx.guild.text_channels)
+        total_voice_channels = len(ctx.guild.voice_channels)
         total_channels = total_text_channels  + total_voice_channels
         member_count = 0
         for member in ctx.guild.members:
