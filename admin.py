@@ -40,14 +40,14 @@ class Admin(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
-    async def mute (self, ctx, member:discord.Member = None):
+    async def mute (self, ctx, member:discord.Member = None, reason=None):
         modRole5 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole6 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
         if modRole5.mention == member.top_role.mention or modRole6.mention == member.top_role.mention:
             await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
         else:
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
-            await ctx.channel.send(f"Користувача {member} заглушено!")
+            await ctx.channel.send(f"Користувача {member} заглушено за {reason}!")
         await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
