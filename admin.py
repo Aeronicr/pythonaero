@@ -70,6 +70,8 @@ class Admin(commands.Cog, name="Info"):
             await ctx.send(embed=embed)
         else:
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Користувач {member.mention} не є заглушеним на даному сервері! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
             # await ctx.channel.send("Користувач не є заглушеним на даному сервері!")
         await ctx.message.delete()
 
