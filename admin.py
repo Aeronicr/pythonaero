@@ -48,6 +48,7 @@ class Admin(commands.Cog, name="Info"):
         else:
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             await ctx.channel.send(f"Користувача {member} заглушено!")
+            await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
@@ -58,7 +59,8 @@ class Admin(commands.Cog, name="Info"):
             await member.remove_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             await ctx.channel.send(f"Користувача {member} розглушено!")
         else:
-            await ctx.channel.send("Користувач не ж заглушеним на даному сервері!")
+            await ctx.channel.send("Користувач не є заглушеним на даному сервері!")
+            await ctx.message.delete()
 
     @commands.command(pass_context=True, aliases=['del', 'очистити'])
     async def clear(self, ctx, amount):
@@ -70,6 +72,7 @@ class Admin(commands.Cog, name="Info"):
 
         await channel.delete_messages(messages)
         await ctx.send('Повідомлення видалено.')
+        
 
 
 def setup(bot):
