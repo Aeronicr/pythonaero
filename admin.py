@@ -61,6 +61,7 @@ class Admin(commands.Cog, name="Info"):
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def unmute (self, ctx, member:discord.Member = None):
         modRole5 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
+        member = ctx.author if not member else member
         if modRole5.mention == member.top_role.mention:
             await member.remove_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
@@ -69,7 +70,7 @@ class Admin(commands.Cog, name="Info"):
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
         else:
-            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Користувач {member.name.mention} не є заглушеним на даному сервері! :bangbang:')
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Користувач {member.name} не є заглушеним на даному сервері! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
             # await ctx.channel.send("Користувач не є заглушеним на даному сервері!")
