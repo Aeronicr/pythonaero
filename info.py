@@ -95,6 +95,15 @@ class Info(commands.Cog, name="Info"):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
+    @commands.command(pass_context = True)
+    async def бот(self, ctx):
+        embed = discord.Embed(color=0xff9900, title='Звіт про створення бота за 23.09.2020')
+        embed.add_field(name="За сьогодні зроблено наступне:",
+                        value="додано команду 'розглушити', перепрацьовано команду 'заглушити'. Ці команди отримали візуальне оформлення. Також, додано оформлення повідомлення про приєднання бота.",
+                        inline=False)
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
     @commands.command(pass_context = True , aliases=['commands_info', 'com_info', 'ком_інфо'])
     async def команди_інфо(self, ctx):
         embed = discord.Embed(color=0xff9900, title=':satellite: Інформація про команду "команди" :satellite: ')
