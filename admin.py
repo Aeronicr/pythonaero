@@ -45,7 +45,9 @@ class Admin(commands.Cog, name="Info"):
         modRole6 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
         modRole7 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
         if modRole5.mention == member.top_role.mention or modRole6.mention == member.top_role.mention or modRole7.mention == member.top_role.mention:
-            await ctx.channel.send("Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними!")
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
         else:
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
