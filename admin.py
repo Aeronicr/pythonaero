@@ -57,9 +57,11 @@ class Admin(commands.Cog, name="Info"):
         if modRole5.mention == member.top_role.mention:
             # await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
             await member.remove_roles(discord.utils.get(member.guild.roles, name='Троляка'))
-            embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Застосовано покарання :white_check_mark:')
-            embed.add_field(name=f"Користувача {member} розглушено", value="!", inline=False)
+            embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
+             embed.set_thumbnail(url=member.avatar_url)
+            embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
             # await ctx.channel.send(f"Користувача {member} розглушено!")
+            embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
         else:
             await ctx.channel.send("Користувач не є заглушеним на даному сервері!")
