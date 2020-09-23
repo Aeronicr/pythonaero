@@ -43,7 +43,7 @@ class Admin(commands.Cog, name="Info"):
     async def mute (self, ctx, member:discord.Member = None, reason=None):
         modRole5 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole6 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
-        modRole7 = [r for r in ctx.guild.roles if r.name == "Троль"][0]
+        modRole7 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
         if modRole5.mention == member.top_role.mention or modRole6.mention == member.top_role.mention or modRole7.mention == member.top_role.mention:
             await ctx.channel.send("Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними!")
         else:
