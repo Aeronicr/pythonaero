@@ -69,7 +69,8 @@ class Admin(commands.Cog, name="Info"):
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
         else:
-            await ctx.channel.send("Користувач не є заглушеним на даному сервері!")
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Користувач {member.mention} не є заглушеним на даному сервері! :bangbang:')
+            # await ctx.channel.send("Користувач не є заглушеним на даному сервері!")
         await ctx.message.delete()
 
     @commands.command(pass_context=True, aliases=['del', 'очистити'])
