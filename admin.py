@@ -49,6 +49,17 @@ class Admin(commands.Cog, name="Info"):
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             await ctx.channel.send(f"Користувача {member} заглушено!")
 
+    @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
+    @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
+    async def unmute (self, ctx, member:discord.Member = None):
+        modRole5 = [r for r in ctx.guild.roles if r.name == "Славетний троляка"][0]
+        if modRole5.mention == member.top_role.mention:
+            # await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
+            await member.remove_roles(discord.utils.get(member.guild.roles, name='Троляка'))
+            await ctx.channel.send(f"Користувача {member} розглушено!")
+        else:
+            await ctx.channel.send("Користувач не ж заглушеним на даному сервері!")
+
     @commands.command(pass_context=True, aliases=['del', 'очистити'])
     async def clear(self, ctx, amount):
         channel = ctx.message.channel
