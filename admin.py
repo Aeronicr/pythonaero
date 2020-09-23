@@ -47,7 +47,11 @@ class Admin(commands.Cog, name="Info"):
             await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
         else:
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
-            await ctx.channel.send(f"Користувача {member} заглушено за {reason}!")
+            embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
+            embed.set_thumbnail(url=member.avatar_url)
+            embed.add_field(name=f"Користувача {member} заглушено за {reason}!", value="Уважно прочитайте правила серверу.", inline=False)
+            embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
         await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
@@ -55,12 +59,10 @@ class Admin(commands.Cog, name="Info"):
     async def unmute (self, ctx, member:discord.Member = None):
         modRole5 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
         if modRole5.mention == member.top_role.mention:
-            # await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
             await member.remove_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
             embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
-            # await ctx.channel.send(f"Користувача {member} розглушено!")
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
         else:
