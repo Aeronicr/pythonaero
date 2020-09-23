@@ -58,7 +58,7 @@ class Admin(commands.Cog, name="Info"):
             # await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
             await member.remove_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
-             embed.set_thumbnail(url=member.avatar_url)
+            embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
             # await ctx.channel.send(f"Користувача {member} розглушено!")
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
