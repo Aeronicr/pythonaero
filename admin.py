@@ -48,7 +48,7 @@ class Admin(commands.Cog, name="Info"):
         else:
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             await ctx.channel.send(f"Користувача {member} заглушено!")
-            await ctx.message.delete()
+        await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
@@ -57,10 +57,13 @@ class Admin(commands.Cog, name="Info"):
         if modRole5.mention == member.top_role.mention:
             # await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
             await member.remove_roles(discord.utils.get(member.guild.roles, name='Троляка'))
-            await ctx.channel.send(f"Користувача {member} розглушено!")
+            embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Застосовано покарання :white_check_mark:')
+            embed.add_field(name=f"Користувача {member} розглушено", value="!", inline=False)
+            # await ctx.channel.send(f"Користувача {member} розглушено!")
+            await ctx.send(embed=embed)
         else:
             await ctx.channel.send("Користувач не є заглушеним на даному сервері!")
-            await ctx.message.delete()
+        await ctx.message.delete()
 
     @commands.command(pass_context=True, aliases=['del', 'очистити'])
     async def clear(self, ctx, amount):
