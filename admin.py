@@ -47,8 +47,7 @@ class Admin(commands.Cog, name="Info"):
             await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
         else:
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
-            if reason == 1:
-                await ctx.channel.send(f"Користувача {member} заглушено за {reason}!")
+            await ctx.channel.send(f"Користувача {member} заглушено за {reason}!")
         await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
