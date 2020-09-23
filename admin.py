@@ -43,12 +43,15 @@ class Admin(commands.Cog, name="Info"):
     async def mute (self, ctx, member:discord.Member = None, reason=None):
         modRole5 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole6 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
-        if modRole5.mention == member.top_role.mention or modRole6.mention == member.top_role.mention:
-            await ctx.channel.send("Ви не можете заглушити себе та інших модераторів")
+        modRole7 = [r for r in ctx.guild.roles if r.name == "Троль"][0]
+        if modRole5.mention == member.top_role.mention or modRole6.mention == member.top_role.mention or modRole7.mention == member.top_role.mention:
+            await ctx.channel.send("Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними!")
         else:
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
             embed.set_thumbnail(url=member.avatar_url)
+            if reason == None:
+                reason = "<причину блокування не вказано>"
             embed.add_field(name=f"Користувача {member} заглушено за {reason}!", value="Уважно прочитайте правила серверу.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
