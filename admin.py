@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions, CheckFailure
 from discord.utils import get
 import asyncio
+from typing import Optional
 
 
 class Admin(commands.Cog, name="Info"):
