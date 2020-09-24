@@ -58,6 +58,8 @@ class Admin(commands.Cog, name="Info"):
             embed.set_thumbnail(url=member.avatar_url)
             if reason == None:
                 reason = "<причину блокування не вказано>"
+            if time == None:
+                time = "<час блокування не вказано>"
             embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} хвилин(у)!", value="Уважно прочитайте правила серверу.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
