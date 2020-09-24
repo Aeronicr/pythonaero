@@ -97,9 +97,9 @@ class Info(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True)
     async def бот(self, ctx):
-        embed = discord.Embed(color=0xff9900, title='Звіт про створення бота за 23.09.2020')
+        embed = discord.Embed(color=0xff9900, title='Звіт про створення бота за 24.09.2020')
         embed.add_field(name="За сьогодні зроблено наступне:",
-                        value="додано команду 'розглушити', перепрацьовано команду 'заглушити'. Ці команди отримали візуальне оформлення. Також, додано оформлення повідомлення про приєднання бота.",
+                        value="додано нові можливості для команди 'заглушити'. Зокрема, тепер можна заглушити користувача на певний проміжок часу з плином якого бот сам розблокує користувача.,
                         inline=False)
         await ctx.send(embed=embed)
         await ctx.message.delete()
