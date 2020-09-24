@@ -40,7 +40,7 @@ class Admin(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
-    async def mute (self, ctx, member:discord.Member = None, reason=None, duration: int):
+    async def mute (self, ctx, duration: int, member:discord.Member = None, reason=None):
         modRole5 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole6 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
         modRole7 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
