@@ -40,7 +40,7 @@ class Admin(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
-    async def mute (self, ctx, member:discord.Member = None, duration: int, reason=None):
+    async def mute (self, ctx, member:discord.Member = None, reason=None):
         modRole5 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole6 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
         modRole7 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
@@ -50,7 +50,6 @@ class Admin(commands.Cog, name="Info"):
             await ctx.send(embed=embed)
         else:
             await member.add_roles(discord.utils.get(member.guild.roles, name='Троляка'))
-            await asyncio.sleep(duration)
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
             embed.set_thumbnail(url=member.avatar_url)
             if reason == None:
@@ -58,7 +57,6 @@ class Admin(commands.Cog, name="Info"):
             embed.add_field(name=f"Користувача {member} заглушено за {reason}!", value="Уважно прочитайте правила серверу.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
-            await member.remove_roles(role)
         await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
