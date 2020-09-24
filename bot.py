@@ -26,7 +26,7 @@ if __name__ == '__main__':
 @bot.event
 async def on_ready():
     activity = discord.Game(name="Захоплення світу")
-    channel = bot.get_channel(736860527149711390)
+    channel = bot.get_channel(755473910115336192)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
     await channel.send(embed=embed)
