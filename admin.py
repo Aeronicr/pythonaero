@@ -61,6 +61,11 @@ class Admin(commands.Cog, name="Info"):
             await ctx.send(embed=embed)
             await asyncio.sleep(duration*60)
             await member.remove_roles(role)
+            embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
+            embed.set_thumbnail(url=member.avatar_url)
+            embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
+            embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
         await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
