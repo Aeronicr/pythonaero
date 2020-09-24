@@ -52,7 +52,6 @@ class Admin(commands.Cog, name="Info"):
         else:
             role = discord.utils.get(member.guild.roles, name='Троляка')
             await member.add_roles(role)
-            await asyncio.sleep(duration)
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
             embed.set_thumbnail(url=member.avatar_url)
             if reason == None:
@@ -60,6 +59,7 @@ class Admin(commands.Cog, name="Info"):
             embed.add_field(name=f"Користувача {member} заглушено за {reason} на {duration} хвилин(у)!", value="Уважно прочитайте правила серверу.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
+            await asyncio.sleep(duration*60)
             await member.remove_roles(role)
         await ctx.message.delete()
 
