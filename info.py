@@ -117,8 +117,7 @@ class Info(commands.Cog, name="Info"):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.command(pass_context=True)
-    @commands.event
+    @commands.Cog.listener()
     async def on_member_join(self, ctx, member):
         embed = discord.Embed(color=0x63ff52, title=':confetti_ball: Новий користувач долучився до серверу :confetti_ball:')
         embed.set_thumbnail(url=member.avatar_url)
