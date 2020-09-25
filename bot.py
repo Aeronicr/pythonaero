@@ -34,7 +34,11 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member):
-    await member.send('Private message')
+    await member.send('Join')
+
+@bot.event
+async def on_member_remove(member):
+    await member.send('Remove')
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
