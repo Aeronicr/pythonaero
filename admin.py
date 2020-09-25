@@ -17,14 +17,22 @@ class Admin(commands.Cog, name="Info"):
         modRole = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole2 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
         if modRole.mention == member.top_role.mention or modRole2.mention == member.top_role.mention:
-            await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
+            # await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заблокувати себе та інших модераторів, а також користувачів, що вже є заблокованими! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
         else:
             if reason == None:
-                reason = "порушення правил серверу"
+                reason = "<причину блокування не вказано>"
             message = f"Вас заблоковано модератором на {ctx.guild.name} за {reason}"
             await member.send(message)
+            embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
+            embed.set_thumbnail(url=member.avatar_url)
+            embed.add_field(name=f"Користувача {member} заблоковано за {reason}!", value="Сподіваємось це буде уроком для решти.", inline=False)
+            embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
             await ctx.guild.ban(member, reason=reason)
-            await ctx.channel.send(f"Користувача {member} заблоковано!")
+            # await ctx.channel.send(f"Користувача {member} заблоковано за {reason}!")
 
     @commands.command(pass_context = True , aliases=['кік', 'вигнати'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
