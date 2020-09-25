@@ -32,6 +32,10 @@ async def on_ready():
     await channel.send(embed=embed)
     # await channel.send("AeroBot долучився до серверу та готовий працювати!")
 
+@bot.event
+async def on_member_join(member):
+    await member.send('Private message')
+
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
 async def setprefix(ctx, *, prefixes=""):
