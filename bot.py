@@ -30,19 +30,6 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
     await channel.send(embed=embed)
-    # await channel.send("AeroBot долучився до серверу та готовий працювати!")
-
-# @bot.event
-# async def on_member_join(member):
-#      embed = discord.Embed(color=0x63ff52, title=':confetti_ball: Новий користувач долучився до серверу :confetti_ball:')
-#     embed.set_thumbnail(url=member.avatar_url)
-#     embed.add_field(name=f"Вітаю тебе, {member} на славетному сервері Славенія.", value="Сподіваюсь ти станеш частинкою даної спільноти. Перш ніж перейти до ближчого знайомства, пропоную тобі переглянути інформацію про даний сервер та правила у #славетний-закон та #славетні правила. Уважно прочитай усе, лише уважні отримають доступ до усіх каналів :)", inline=False)
-#     embed.set_footer(text=f"Приємного спілкування {member}", icon_url=member.avatar_url)
-#     await ctx.send(755473910115336192, embed=embed)
-
-@bot.event
-async def on_member_remove(member):
-    await member.send('Remove')
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
