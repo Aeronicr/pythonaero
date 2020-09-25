@@ -132,7 +132,7 @@ class Info(commands.Cog, name="Info"):
                 embed = discord.Embed(color=0x63ff52, title=':confetti_ball: Новий користувач долучився до серверу :confetti_ball:')
                 embed.set_thumbnail(url=member.avatar_url)
                 embed.add_field(name=f"Вітаю тебе, {member} на славетному сервері Славенія.", value="Сподіваюсь ти станеш частинкою даної спільноти. Перш ніж перейти до ближчого знайомства, пропоную тобі переглянути інформацію про даний сервер та правила у #славетний-закон та #славетні правила. Уважно прочитай усе, лише уважні отримають доступ до усіх каналів :)", inline=False)
-                mbed.set_footer(text=f"Приємного спілкування {member}", icon_url=member.avatar_url)
+                embed.set_footer(text=f"Приємного спілкування {member}", icon_url=member.avatar_url)
                 await channel.send(embed=embed)
 
 
