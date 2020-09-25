@@ -34,7 +34,11 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member):
-    await member.send('Join')
+     embed = discord.Embed(color=0x63ff52, title=':confetti_ball: Новий користувач долучився до серверу :confetti_ball:')
+    embed.set_thumbnail(url=member.avatar_url)
+    embed.add_field(name=f"Вітаю тебе, {member} на славетному сервері Славенія.", value="Сподіваюсь ти станеш частинкою даної спільноти. Перш ніж перейти до ближчого знайомства, пропоную тобі переглянути інформацію про даний сервер та правила у #славетний-закон та #славетні правила. Уважно прочитай усе, лише уважні отримають доступ до усіх каналів :)", inline=False)
+    embed.set_footer(text=f"Приємного спілкування {member}", icon_url=member.avatar_url)
+    await ctx.send(755473910115336192, embed=embed)
 
 @bot.event
 async def on_member_remove(member):
