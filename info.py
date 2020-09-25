@@ -117,13 +117,20 @@ class Info(commands.Cog, name="Info"):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.Cog.listener()
-    async def on_member_join(member):
-        embed = discord.Embed(color=0x63ff52, title=':confetti_ball: Новий користувач долучився до серверу :confetti_ball:')
-        # embed.set_thumbnail(url=member.avatar_url)
-        embed.add_field(name=f"Вітаю тебе, {member} на славетному сервері Славенія.", value="Сподіваюсь ти станеш частинкою даної спільноти. Перш ніж перейти до ближчого знайомства, пропоную тобі переглянути інформацію про даний сервер та правила у #славетний-закон та #славетні правила. Уважно прочитай усе, лише уважні отримають доступ до усіх каналів :)", inline=False)
-        embed.set_footer(text=f"Приємного спілкування {member}", icon_url=member.avatar_url)
-        await channel.send(755473910115336192, embed=embed)
+    # @commands.Cog.listener()
+    # async def on_member_join(member):
+    #     embed = discord.Embed(color=0x63ff52, title=':confetti_ball: Новий користувач долучився до серверу :confetti_ball:')
+    #     # embed.set_thumbnail(url=member.avatar_url)
+    #     embed.add_field(name=f"Вітаю тебе, {member} на славетному сервері Славенія.", value="Сподіваюсь ти станеш частинкою даної спільноти. Перш ніж перейти до ближчого знайомства, пропоную тобі переглянути інформацію про даний сервер та правила у #славетний-закон та #славетні правила. Уважно прочитай усе, лише уважні отримають доступ до усіх каналів :)", inline=False)
+    #     embed.set_footer(text=f"Приємного спілкування {member}", icon_url=member.avatar_url)
+    #     await channel.send(755473910115336192, embed=embed)
+
+     @commands.Cog.listener()
+    async def on_member_join(self,member):
+        for channel in member.guild.channels:
+            if str(channel) == "test-bot":
+                await channel.send(f"Welcome to the {member.guild.name} discord server, {member.mention}")
+
 
 def setup(bot):
     bot.add_cog(Info(bot))
