@@ -97,9 +97,9 @@ class Info(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True)
     async def бот(self, ctx):
-        embed = discord.Embed(color=0xff9900, title='Звіт про створення бота за 24.09.2020')
+        embed = discord.Embed(color=0xff9900, title='Звіт про створення бота за 25.09.2020')
         embed.add_field(name="За сьогодні зроблено наступне:",
-                        value="додано нові можливості для команди 'заглушити'. Зокрема, тепер можна заглушити користувача на певний проміжок часу з плином якого бот сам розблокує користувача.",
+                        value="перепрацьовано візуальне оормоення команд 'вигнати' та 'заблокувати'. Бот відтепер інформуватиме про приєднання та вихід користувачів на сервері.",
                         inline=False)
         await ctx.send(embed=embed)
         await ctx.message.delete()
@@ -117,19 +117,11 @@ class Info(commands.Cog, name="Info"):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    # @commands.Cog.listener()
-    # async def on_member_join(member):
-    #     embed = discord.Embed(color=0x63ff52, title=':confetti_ball: Новий користувач долучився до серверу :confetti_ball:')
-    #     embed.set_thumbnail(url=member.avatar_url)
-    #     embed.add_field(name=f"Вітаю тебе, {member} на славетному сервері Славенія.", value="Сподіваюсь ти станеш частинкою даної спільноти. Перш ніж перейти до ближчого знайомства, пропоную тобі переглянути інформацію про даний сервер та правила у #славетний-закон та #славетні правила. Уважно прочитай усе, лише уважні отримають доступ до усіх каналів :)", inline=False)
-    #     embed.set_footer(text=f"Приємного спілкування {member}", icon_url=member.avatar_url)
-    #     await channel.send(755473910115336192, embed=embed)
-
     @commands.Cog.listener()
     async def on_member_join(self,member):
         for channel in member.guild.channels:
-            if str(channel) == "test-bot":
-                embed = discord.Embed(color=0x63ff52, title=':confetti_ball: Новий користувач долучився до серверу :confetti_ball:')
+            if str(channel) == "славетна-вітальня":
+                embed = discord.Embed(color=0x88fc03, title=':confetti_ball: Новий користувач долучився до серверу :confetti_ball:')
                 embed.set_thumbnail(url=member.avatar_url)
                 embed.add_field(name=f"Вітаю тебе, {member} на славетному сервері Славенія.", value="Сподіваюсь ти станеш частинкою даної спільноти. Перш ніж перейти до ближчого знайомства, пропоную тобі переглянути інформацію про даний сервер та правила у #славетний-закон та #славетні правила. Уважно прочитай усе, лише уважні отримають доступ до усіх каналів :)", inline=False)
                 embed.set_footer(text=f"Приємного спілкування {member}", icon_url='https://i.ibb.co/PMKLn81/hi.png')
@@ -138,8 +130,8 @@ class Info(commands.Cog, name="Info"):
     @commands.Cog.listener()
     async def on_member_remove(self,member):
         for channel in member.guild.channels:
-            if str(channel) == "test-bot":
-                embed = discord.Embed(color=0x63ff52, title=':disappointed_relieved: Користувач покинув сервер :disappointed_relieved: ')
+            if str(channel) == "славетна-вітальня":
+                embed = discord.Embed(color=0x097db8, title=':disappointed_relieved: Користувач покинув сервер :disappointed_relieved: ')
                 embed.set_thumbnail(url=member.avatar_url)
                 embed.add_field(name=f"Користувач, {member} покинув сервер Славенія.", value="Сподіваємось він запам'ятає час проведений на цьому сервері", inline=False)
                 embed.set_footer(text=f"Бувай, {member}", icon_url='https://i.ibb.co/3Ft4mCB/buy.png')
