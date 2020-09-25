@@ -125,7 +125,7 @@ class Info(commands.Cog, name="Info"):
     #     embed.set_footer(text=f"Приємного спілкування {member}", icon_url=member.avatar_url)
     #     await channel.send(755473910115336192, embed=embed)
 
-     @commands.Cog.listener()
+    @commands.Cog.listener()
     async def on_member_join(self,member):
         for channel in member.guild.channels:
             if str(channel) == "test-bot":
