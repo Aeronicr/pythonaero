@@ -11,13 +11,12 @@ class Admin(commands.Cog, name="Info"):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(pass_context = True , aliases=['бан'])
+    @commands.command(pass_context = True , aliases=['бан', 'заблокувати'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def ban (self, ctx, member:discord.Member = None, reason = None):
         modRole = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole2 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
         if modRole.mention == member.top_role.mention or modRole2.mention == member.top_role.mention:
-            # await ctx.channel.send("Ви не можете заблокувати себе та інших модераторів")
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заблокувати себе та інших модераторів, а також користувачів, що вже є заблокованими! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
@@ -32,7 +31,7 @@ class Admin(commands.Cog, name="Info"):
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
             await ctx.guild.ban(member, reason=reason)
-            # await ctx.channel.send(f"Користувача {member} заблоковано за {reason}!")
+        await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['кік', 'вигнати'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
@@ -40,14 +39,21 @@ class Admin(commands.Cog, name="Info"):
         modRole3 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole4 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
         if modRole3.mention == member.top_role.mention or modRole4.mention == member.top_role.mention:
-            await ctx.channel.send("Ви не можете вигнати себе та інших модераторів")
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете вигнати себе та інших модераторів, а також користувачів, що не є учасниками серверу! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
         else:
             if reason == None:
-                reason = "порушення правил серверу"
+                reason = "<причину блокування не вказано>"
             message = f"Вас вигнали із серверу {ctx.guild.name} за {reason}"
             await member.send(message)
-            await ctx.guild.ban(member, reason=reason)
-            await ctx.channel.send(f"Користувача {member} виключено із серверу!")
+            embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
+            embed.set_thumbnail(url=member.avatar_url)
+            embed.add_field(name=f"Користувача {member} виключено із серверу за {reason}!", value="Сподіваємось це буде уроком для решти.", inline=False)
+            embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+            await ctx.guild.kick(member, reason=reason)
+        await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
@@ -96,7 +102,6 @@ class Admin(commands.Cog, name="Info"):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Користувач {member.name} не є заглушеним на даному сервері! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
-            # await ctx.channel.send("Користувач не є заглушеним на даному сервері!")
         await ctx.message.delete()
 
     @commands.command(pass_context=True, aliases=['del', 'очистити'])
