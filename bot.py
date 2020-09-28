@@ -46,15 +46,15 @@ async def test(ctx, message):
         testEmbed.add_field(name='Test', value='Test')
 
     msg = await ctx.send(embed=testEmbed)
-    await message.add_reaction(msg, emoji=':slavetnyi_dypa:')
+#     await message.add_reaction(msg, emoji=':slavetnyi_dypa:')
 
-@bot.event
-async def on_reaction_add(reaction, member):
-    if reaction.message.channel.id != '755473910115336192':
-        return
-    if reaction.emoji == ":slavetnyi_dypa:":
-        Role = discord.utils.get(member.server.roles, name="Еротика")
-        await member.add_roles(member, Role)
+# @bot.event
+# async def on_reaction_add(reaction, member):
+#     if reaction.message.channel.id != '755473910115336192':
+#         return
+#     if reaction.emoji == ":slavetnyi_dypa:":
+#         Role = discord.utils.get(member.server.roles, name="Еротика")
+#         await member.add_roles(member, Role)
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
