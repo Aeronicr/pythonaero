@@ -66,7 +66,7 @@ async def test(ctx):
     msg = await ctx.send(embed=embed)
     emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
     channel = bot.get_channel(755473910115336192)
-    await channel.send(channel)
+    await channel.send(emoji)
     await msg.add_reaction(emoji)
 
 @bot.event
