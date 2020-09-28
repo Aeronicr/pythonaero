@@ -68,11 +68,12 @@ async def test(ctx):
     await msg.add_reaction(emoji)
 
 @bot.event
-async def on_reaction_add(reaction, member, ctx):
+async def on_reaction_add(reaction, member):
     # if reaction.message.channel.id != '755473910115336192':
     #     return
     if str(reaction.emoji) == 'slavetnyi_dypa':
-        ctx.send('Ok')
+        channel = bot.get_channel(755473910115336192)
+        channel.send('Ok')
         await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
 
 bot.remove_command("help")
