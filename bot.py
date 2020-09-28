@@ -24,7 +24,7 @@ if __name__ == '__main__':
             traceback.print_exc()
 
 @bot.event
-async def on_ready():
+async def on_ready(message):
     activity = discord.Game(name="Захоплення світу")
     channel = bot.get_channel(755473910115336192)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
@@ -32,8 +32,8 @@ async def on_ready():
     await channel.send(embed=embed)
 
     Text= "YOUR_MESSAGE_HERE"
-    Moji = await bot.send_message(channel, Text)
-    await bot.add_reaction(Moji, emoji=':slavetnyi_dypa:')
+    Moji = await message.channel.send(channel, Text)
+    await message.add_reaction(Moji, emoji=':slavetnyi_dypa:')
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
@@ -43,12 +43,12 @@ async def setprefix(ctx, *, prefixes=""):
 
 @bot.event
 async def on_reaction_add(reaction, member):
-    Channel = client.get_channel('755473910115336192')
+    Channel = bot.get_channel('755473910115336192')
     if reaction.message.channel.id != Channel:
         return
     if reaction.emoji == ":slavetnyi_dypa:":
-      Role = discord.utils.get(member.server.roles, name="Еротика")
-      await bot.add_roles(member, Role)
+      role = get(member.guild.roles, name="Еротика")
+      await member.add_roles(role)
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
