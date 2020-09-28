@@ -62,7 +62,8 @@ async def setprefix(ctx, *, prefixes=""):
 async def test(ctx):
     embed = discord.Embed(color=0xff9900, title='Test')
     embed.add_field(name="Test", value="Test")
-    await ctx.send(embed=embed)
+    msg = await ctx.send(embed=embed)
+    await message.add_reaction(msg, emoji=':slavetnyi_dypa:')
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
