@@ -3,6 +3,7 @@ from discord.ext import commands
 import sys, traceback
 import os
 from discord.ext.commands import has_permissions
+from discord.utils import get
 
 custom_prefixes = {}
 default_prefixes = ['.']
@@ -63,7 +64,8 @@ async def test(ctx):
     embed = discord.Embed(color=0xff9900, title='Test')
     embed.add_field(name="Test", value="Test")
     msg = await ctx.send(embed=embed)
-    await msg.add_reaction('U+1F198')
+    emoji = get(bot.get_all_emojis(), name='slavetnyi_dypa')
+    await msg.add_reaction(emoji)
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
