@@ -45,7 +45,7 @@ async def test(ctx, message):
         testEmbed.set_author(name='Test')
         testEmbed.add_field(name='Test', value='Test')
 
-    msg = await ctx.send(embed=testEmbed)
+    await ctx.send(embed=testEmbed)
 #     await message.add_reaction(msg, emoji=':slavetnyi_dypa:')
 
 # @bot.event
