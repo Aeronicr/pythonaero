@@ -39,7 +39,7 @@ async def setprefix(ctx, *, prefixes=""):
     await ctx.send("Префікс бота успішно змінено!")
 
 @bot.command(pass_context=True)
-async def test(ctx, message):
+async def test(ctx):
     if ctx.message.author.server_permissions.administrator:
         testEmbed = discord.Embed(color = discord.Color.red())
         testEmbed.set_author(name='Test')
