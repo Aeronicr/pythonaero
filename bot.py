@@ -65,7 +65,8 @@ async def test(ctx):
     embed.add_field(name="Test", value="Test")
     msg = await ctx.send(embed=embed)
     emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
-    bot.send_message(channel, emoji)
+    channel = bot.get_channel(755473910115336192)
+    awaitchannel.send(channel)
     await msg.add_reaction(emoji)
 
 @bot.event
@@ -74,7 +75,7 @@ async def on_reaction_add(reaction, member):
     #     return
     if str(reaction.emoji) == ':slavetnyi_dypa:':
         channel = bot.get_channel(755473910115336192)
-        channel.send('Ok')
+        awaitchannel.send('Ok')
         await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
 
 bot.remove_command("help")
