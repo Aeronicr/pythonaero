@@ -31,9 +31,6 @@ async def on_ready(message):
     embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
     await channel.send(embed=embed)
 
-    Text= "YOUR_MESSAGE_HERE"
-    Moji = await message.channel.send(channel, Text)
-    await message.add_reaction(Moji, emoji=':slavetnyi_dypa:')
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
@@ -41,14 +38,23 @@ async def setprefix(ctx, *, prefixes=""):
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")
 
+@bot.command(pass_context=True)
+async def test(ctx):
+    if ctx.message.author.server_permissions.administrator:
+        testEmbed = discord.Embed(color = discord.Color.red())
+        testEmbed.set_author(name='Test')
+        testEmbed.add_field(name='Test', value='Test')
+
+    msg = await bot.send_message(ctx.message.channel, embed=testEmbed)
+    await bot.add_reaction(msg, emoji=':slavetnyi_dypa:')
+
 @bot.event
-async def on_reaction_add(reaction, member):
-    Channel = bot.get_channel('755473910115336192')
-    if reaction.message.channel.id != Channel:
+async def on_reaction_add(reaction, user):
+    if reaction.message.channel.id != '755473910115336192':
         return
     if reaction.emoji == ":slavetnyi_dypa:":
-      role = get(member.guild.roles, name="Еротика")
-      await member.add_roles(role)
+        Role = discord.utils.get(user.server.roles, name="Еротика")
+        await bot.add_roles(user, Role)
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
