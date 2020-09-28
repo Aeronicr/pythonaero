@@ -62,9 +62,8 @@ async def setprefix(ctx, *, prefixes=""):
 async def test(ctx, message):
 
     embed = discord.Embed(color=0xff9900, title='Test')
-        embed.set_thumbnail(url="https://i.ibb.co/5cNn5cL/1.png")
-        embed.add_field(name="Test", value="Test")
-        await ctx.send(embed=embed)
+    embed.add_field(name="Test", value="Test")
+    await ctx.send(embed=embed)
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
 
