@@ -24,7 +24,7 @@ if __name__ == '__main__':
             traceback.print_exc()
 
 @bot.event
-async def on_ready(message):
+async def on_ready():
     activity = discord.Game(name="Захоплення світу")
     channel = bot.get_channel(755473910115336192)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
@@ -54,7 +54,7 @@ async def on_reaction_add(reaction, member):
         return
     if reaction.emoji == ":slavetnyi_dypa:":
         Role = discord.utils.get(member.server.roles, name="Еротика")
-        await member.add_roles(user, Role)
+        await member.add_roles(member, Role)
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
