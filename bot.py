@@ -38,14 +38,14 @@ async def setprefix(ctx, *, prefixes=""):
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")
 
-@bot.command(pass_context=True)
-async def test(ctx):
-    if ctx.message.author.server_permissions.administrator:
-        testEmbed = discord.Embed(color = discord.Color.red())
-        testEmbed.set_author(name='Test')
-        testEmbed.add_field(name='Test', value='Test')
+# @bot.command(pass_context=True)
+# async def test(ctx, message):
+#     if ctx.message.author.server_permissions.administrator:
+#         testEmbed = discord.Embed(color = discord.Color.red())
+#         testEmbed.set_author(name='Test')
+#         testEmbed.add_field(name='Test', value='Test')
 
-    await ctx.send(embed=testEmbed)
+#     msg = await ctx.send(embed=testEmbed)
 #     await message.add_reaction(msg, emoji=':slavetnyi_dypa:')
 
 # @bot.event
@@ -56,6 +56,15 @@ async def test(ctx):
 #         Role = discord.utils.get(member.server.roles, name="Еротика")
 #         await member.add_roles(member, Role)
 
+
+
+@bot.command(pass_context=True)
+async def test(ctx, message):
+
+    embed = discord.Embed(color=0xff9900, title='Test')
+        embed.set_thumbnail(url="https://i.ibb.co/5cNn5cL/1.png")
+        embed.add_field(name="Test", value="Test")
+        await ctx.send(embed=embed)
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
 
