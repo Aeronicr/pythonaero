@@ -63,7 +63,7 @@ async def test(ctx):
     embed = discord.Embed(color=0xff9900, title='Test')
     embed.add_field(name="Test", value="Test")
     msg = await ctx.send(embed=embed)
-    await msg.add_reaction('face_with_symbols_over_mouth')
+    await msg.add_reaction('U+1F198')
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
