@@ -37,7 +37,14 @@ async def setprefix(ctx, *, prefixes=""):
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")
 
-
+@bot.event
+async def on_ready():
+    channel = bot.get_channel('755473910115336192')
+    role = discord.utils.get(user.server.roles, name="Еротика")
+    message = await bot.send_message(channel, "Піструнець!")
+    while True:
+        reaction = await bot.wait_for_reaction(emoji=":slavetnyi_dypa:", message=message)
+        await bot.add_roles(reaction.message.author, role)
 
 
 bot.remove_command("help")
