@@ -39,22 +39,22 @@ async def setprefix(ctx, *, prefixes=""):
     await ctx.send("Префікс бота успішно змінено!")
 
 @bot.command(pass_context=True)
-async def test(ctx):
+async def test(ctx, message):
     if ctx.message.author.server_permissions.administrator:
         testEmbed = discord.Embed(color = discord.Color.red())
         testEmbed.set_author(name='Test')
         testEmbed.add_field(name='Test', value='Test')
 
-    msg = await bot.send_message(ctx.message.channel, embed=testEmbed)
-    await bot.add_reaction(msg, emoji=':slavetnyi_dypa:')
+    msg = await ctx.send(embed=testEmbed)
+    await message.add_reaction(msg, emoji=':slavetnyi_dypa:')
 
 @bot.event
-async def on_reaction_add(reaction, user):
+async def on_reaction_add(reaction, member):
     if reaction.message.channel.id != '755473910115336192':
         return
     if reaction.emoji == ":slavetnyi_dypa:":
-        Role = discord.utils.get(user.server.roles, name="Еротика")
-        await bot.add_roles(user, Role)
+        Role = discord.utils.get(member.server.roles, name="Еротика")
+        await member.add_roles(user, Role)
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
