@@ -64,7 +64,7 @@ async def test(ctx):
     embed = discord.Embed(color=0xff9900, title='Test')
     embed.add_field(name="Test", value="Test")
     msg = await ctx.send(embed=embed)
-    emoji = get(bot.get_all_emojis(), name='slavetnyi_dypa')
+    emoji = get(bot.emojis(), name='slavetnyi_dypa')
     await msg.add_reaction(emoji)
 
 bot.remove_command("help")
