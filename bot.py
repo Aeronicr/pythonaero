@@ -71,7 +71,7 @@ async def test(ctx):
 async def on_reaction_add(reaction, member):
     # if reaction.message.channel.id != '755473910115336192':
     #     return
-    if reaction.emoji == 'slavetnyi_dypa':
+    if emoji == 'slavetnyi_dypa':
         await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
 
 bot.remove_command("help")
