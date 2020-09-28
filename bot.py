@@ -59,7 +59,7 @@ async def setprefix(ctx, *, prefixes=""):
 
 
 @bot.command(pass_context=True)
-async def test(ctx):
+async def test(ctx, message):
     embed = discord.Embed(color=0xff9900, title='Test')
     embed.add_field(name="Test", value="Test")
     msg = await ctx.send(embed=embed)
