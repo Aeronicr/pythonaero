@@ -44,8 +44,8 @@ async def setprefix(ctx, *, prefixes=""):
 @bot.event
 async def on_reaction_add(reaction, member):
     Channel = client.get_channel('755473910115336192')
-    if reaction.message.channel.id != Channel
-    return
+    if reaction.message.channel.id != Channel:
+        return
     if reaction.emoji == ":slavetnyi_dypa:":
       Role = discord.utils.get(member.server.roles, name="Еротика")
       await bot.add_roles(member, Role)
