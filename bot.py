@@ -30,6 +30,11 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
     await channel.send(embed=embed)
+    role = discord.utils.get(user.server.roles, name="Еротика")
+    message = await bot.send_message(channel, "Піструнець!")
+    while True:
+        reaction = await bot.wait_for_reaction(emoji=":slavetnyi_dypa:", message=message)
+        await bot.add_roles(reaction.message.author, role)
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
@@ -37,14 +42,6 @@ async def setprefix(ctx, *, prefixes=""):
     custom_prefixes[ctx.guild.id] = prefixes.split() or default_prefixes
     await ctx.send("Префікс бота успішно змінено!")
 
-@bot.event
-async def on_ready():
-    channel = bot.get_channel('755473910115336192')
-    role = discord.utils.get(user.server.roles, name="Еротика")
-    message = await bot.send_message(channel, "Піструнець!")
-    while True:
-        reaction = await bot.wait_for_reaction(emoji=":slavetnyi_dypa:", message=message)
-        await bot.add_roles(reaction.message.author, role)
 
 
 bot.remove_command("help")
