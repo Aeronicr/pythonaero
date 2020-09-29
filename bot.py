@@ -73,11 +73,11 @@ async def test(ctx):
 async def on_reaction_add(reaction, member):
     # if reaction.message.channel.id != '755473910115336192':
     #     return
-    emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
-    if reaction.emoji == ':slavetnyi_dypa:':
+    if reaction.emoji == slavetnyi_dypa:
         channel = bot.get_channel(755473910115336192)
         await channel.send('Ok')
         await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
+
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
