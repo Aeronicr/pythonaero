@@ -66,10 +66,12 @@ async def test(ctx):
     msg = await ctx.send(embed=embed)
     emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
     emoji2 = discord.utils.get(bot.emojis, name='slavetnyi_monkas')
-    emoji2 = discord.utils.get(bot.emojis, name='slavetnyi_wha')
+    emoji3 = discord.utils.get(bot.emojis, name='slavetnyi_wha')
+    emoji4 = discord.utils.get(bot.emojis, name='slavetnyi_heyguys')
     await msg.add_reaction(emoji)
     await msg.add_reaction(emoji2)
     await msg.add_reaction(emoji3)
+    await msg.add_reaction(emoji4)
 
 @bot.event
 async def on_reaction_add(reaction, member):
@@ -81,6 +83,8 @@ async def on_reaction_add(reaction, member):
         await member.add_roles(discord.utils.get(member.guild.roles, name='Політика'))
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
         await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
+    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
 
 @bot.event
 async def on_reaction_remove(reaction, member):
@@ -92,6 +96,8 @@ async def on_reaction_remove(reaction, member):
         await member.remove_roles(discord.utils.get(member.guild.roles, name='Політика'))
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
         await member.remove_roles(discord.utils.get(member.guild.roles, name='Геймер'))
+    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
+        await member.remove_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
 
 
 bot.remove_command("help")
