@@ -39,7 +39,7 @@ async def on_ready():
     # embed.add_field(name=":underage: Отримання еротичної ролі на сервері:", value="Щоб отримати роль 'Еротика' та перейти до каналу із контентом для дорослих натисніть на реакцію :slavetnyi_dypa: **Увага! Якщо вам немає 18+ років, не натискайте реакцію та перегляньте правила знову.**", inline=False)
     # embed.add_field(name=":video_game: Отримання ґеймерської ролі на сервері:", value="Щоб отримати роль 'Ґеймер' та перейти до каналу із обговоренням ігор натисніть на реакцію :slavetnyi_wha:", inline=False)
     # msg = await channel.send(embed=embed)
-    msg = await channel.fetch_message(760570297739902977)
+    msg = await bot.get_message(760570297739902977)
     emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
     emoji2 = discord.utils.get(bot.emojis, name='slavetnyi_monkas')
     emoji3 = discord.utils.get(bot.emojis, name='slavetnyi_wha')
