@@ -52,16 +52,15 @@ async def on_ready():
 
 @bot.event
 async def on_reaction_add(reaction, member):
-    # if reaction.message.channel.id != '755473910115336192':
-    #     return
-    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
-    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Політика'))
-    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
-    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
+    if reaction.channel.fetch_message == '760570297739902977':
+        if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
+            await member.add_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
+        elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
+            await member.add_roles(discord.utils.get(member.guild.roles, name='Політика'))
+        elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
+            await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
+        elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
+            await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
     # msg = await channel.fetch_message(760566507737579540)
     # msg = await channel.send("Ok")
     # emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
@@ -100,18 +99,18 @@ async def setprefix(ctx, *, prefixes=""):
 #     await msg.add_reaction(emoji3)
 #     await ctx.message.delete()
 
-@bot.event
-async def on_reaction_add(reaction, member):
-    # if reaction.message.channel.id != '755473910115336192':
-    #     return
-    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
-    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Політика'))
-    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
-    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
+# @bot.event
+# async def on_reaction_add(reaction, member):
+#     # if reaction.message.channel.id != '755473910115336192':
+#     #     return
+#     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
+#         await member.add_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
+#     elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
+#         await member.add_roles(discord.utils.get(member.guild.roles, name='Політика'))
+#     elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
+#         await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
+#     elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
+#         await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
 
 @bot.event
 async def on_reaction_remove(reaction, member):
