@@ -76,6 +76,13 @@ async def on_reaction_add(reaction, member):
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
         await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
 
+@bot.event
+async def on_reaction_remove(reaction, member):
+    # if reaction.message.channel.id != '755473910115336192':
+    #     return
+    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
+        await member.remove_roles(discord.utils.get(member.guild.roles, name='Еротика'))
+
 
 bot.remove_command("help")
 bot.run(os.environ['DISCORD_TOKEN'])
