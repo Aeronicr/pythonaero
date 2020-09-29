@@ -60,7 +60,7 @@ async def setprefix(ctx, *, prefixes=""):
 
 
 @bot.command(pass_context=True)
-async def test(ctx, reaction):
+async def test(ctx):
     embed = discord.Embed(color=0xff9900, title='Test')
     embed.add_field(name="Test", value="Test")
     msg = await ctx.send(embed=embed)
@@ -68,7 +68,6 @@ async def test(ctx, reaction):
     channel = bot.get_channel(755473910115336192)
     await channel.send(emoji)
     await msg.add_reaction(emoji)
-    await channel.send(str(emoji))
 
 @bot.event
 async def on_reaction_add(reaction, member):
