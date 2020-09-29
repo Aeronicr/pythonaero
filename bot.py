@@ -92,7 +92,7 @@ async def on_raw_reaction_add(payload):
     member = payload.member
     guild = member.guild
     # If you want to run your bot on multiple guilds. Then the code under this comment should be updated.
-    channel = guild.get_channel(740608959207047250)
+    channel = guild.get_channel(736860527149711390)
     MESSAGE = "{user.name} is now part of the Mole Workforce!"
     role = guild.get_role(736861051001372673)
     if payload.emoji.name == EMOJI:
