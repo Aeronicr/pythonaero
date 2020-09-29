@@ -64,10 +64,8 @@ async def test(ctx):
     embed = discord.Embed(color=0xff9900, title='Test')
     embed.add_field(name="Test", value="Test")
     msg = await ctx.send(embed=embed)
-    # emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
-    emoji = discord.utils.get(bot.emojis, name='video_game')
+    emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
     await msg.add_reaction(emoji)
-    # await msg.add_reaction(emoji2)
 
 @bot.event
 async def on_reaction_add(reaction, member):
@@ -75,8 +73,6 @@ async def on_reaction_add(reaction, member):
     #     return
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
         await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
-    if reaction.emoji == discord.utils.get(bot.emojis, name='video_game'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
 
 @bot.event
 async def on_reaction_remove(reaction, member):
@@ -84,8 +80,6 @@ async def on_reaction_remove(reaction, member):
     #     return
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
         await member.remove_roles(discord.utils.get(member.guild.roles, name='Еротика'))
-    if reaction.emoji == discord.utils.get(bot.emojis, name='video_game'):
-        await member.remove_roles(discord.utils.get(member.guild.roles, name='Геймер'))
 
 
 bot.remove_command("help")
