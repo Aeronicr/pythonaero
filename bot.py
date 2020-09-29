@@ -70,6 +70,7 @@ async def ролі(ctx):
     await msg.add_reaction(emoji3)
     await ctx.message.delete()
 
+@bot.event
 async def on_reaction_add(reaction, member):
     # if reaction.message.channel.id != '755473910115336192':
     #     return
