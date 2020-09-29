@@ -97,9 +97,9 @@ class Info(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True)
     async def бот(self, ctx):
-        embed = discord.Embed(color=0xff9900, title='Звіт про створення бота за 25.09.2020')
+        embed = discord.Embed(color=0xff9900, title='Звіт про створення бота за 29.09.2020')
         embed.add_field(name="За сьогодні зроблено наступне:",
-                        value="перепрацьовано візуальне оормоення команд 'вигнати' та 'заблокувати'. Бот відтепер інформуватиме про приєднання та вихід користувачів на сервері.",
+                        value="Створено вибір ролей за реакціями користувачів. Перепрацьовано інфоомацію з каналу правил.",
                         inline=False)
         await ctx.send(embed=embed)
         await ctx.message.delete()
