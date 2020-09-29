@@ -62,7 +62,7 @@ async def setprefix(ctx, *, prefixes=""):
 @bot.command(pass_context=True, aliases=['roles'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
 async def ролі(ctx):
-    channel = bot.get_channel()
+    channel = bot.get_channel('755473910115336192')
     if channel == '755473910115336192':
         embed = discord.Embed(color=0x09c7ed, title=':bangbang: Оримання ролей та доступу до каналів :bangbang:')
         embed.set_thumbnail(url="https://i.ibb.co/4s54fP2/admin-settings-male.png")
