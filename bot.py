@@ -61,8 +61,11 @@ async def setprefix(ctx, *, prefixes=""):
 
 @bot.command(pass_context=True)
 async def test(ctx):
-    embed = discord.Embed(color=0xff9900, title='Test')
-    embed.add_field(name="Test", value="Test")
+    embed = discord.Embed(color=0x09c7ed, title=':bangbang: Оримання ролей та доступу до каналів :bangbang:')
+    embed.add_field(name="Отримання початкової ролі на сервері:", value="Щоб отримати роль 'Новоприбулий' та перейти до основних каналів натисніть на реакцію :slavetnyi_heyguys:")
+    embed.add_field(name="Отримання політичної ролі на сервері:", value="Щоб отримати роль 'Політика' та перейти до каналу із політичними обговореннями натисніть на реакцію :slavetnyi_monkas:")
+    embed.add_field(name="Отримання еротичної ролі на сервері:", value="Щоб отримати роль 'Еротика' та перейти до каналу із контентом для дорослих натисніть на реакцію :slavetnyi_dypa: **Увага! Якщо вам немає 18+ років, не натискайте реакцію та перегляньте правила знову.**")
+    embed.add_field(name="Отримання ґеймерської ролі на сервері:", value="Щоб отримати роль 'Ґеймер' та перейти до каналу із обговоренням ігор натисніть на реакцію :slavetnyi_wha:")
     msg = await ctx.send(embed=embed)
     emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
     emoji2 = discord.utils.get(bot.emojis, name='slavetnyi_monkas')
@@ -75,21 +78,21 @@ async def test(ctx):
 
 @bot.event
 async def on_reaction_add(reaction, member):
-    # if reaction.message.channel.id != '755473910115336192':
-    #     return
-    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
-    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Політика'))
-    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
-        await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
+    if reaction.message.channel.id != '755473910115336192':
+        return
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
         await member.add_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
+    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Політика'))
+    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
+    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
 
 @bot.event
 async def on_reaction_remove(reaction, member):
-    # if reaction.message.channel.id != '755473910115336192':
-    #     return
+    if reaction.message.channel.id != '755473910115336192':
+        return
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
         await member.remove_roles(discord.utils.get(member.guild.roles, name='Еротика'))
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
