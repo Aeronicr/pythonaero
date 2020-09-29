@@ -43,7 +43,6 @@ async def on_ready():
     await msg.add_reaction(emoji)
     await msg.add_reaction(emoji3)
 
-@bot.event
 async def on_reaction_add(reaction, member):
     # if reaction.message.channel.id != '755473910115336192':
     #     return
