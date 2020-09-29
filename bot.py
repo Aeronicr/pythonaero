@@ -32,6 +32,23 @@ async def on_ready():
     embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
     await channel.send(embed=embed)
 
+    embed = discord.Embed(color=0x09c7ed, title=':bangbang: Оримання ролей та доступу до каналів :bangbang:')
+    embed.set_thumbnail(url="https://i.ibb.co/4s54fP2/admin-settings-male.png")
+    embed.add_field(name=":baby:Отримання початкової ролі на сервері:", value="Щоб отримати роль 'Новоприбулий' та перейти до основних каналів натисніть на реакцію :slavetnyi_heyguys:", inline=False)
+    embed.add_field(name=":man_judge: Отримання політичної ролі на сервері:", value="Щоб отримати роль 'Політика' та перейти до каналу із політичними обговореннями натисніть на реакцію :slavetnyi_monkas:", inline=False)
+    embed.add_field(name=":underage: Отримання еротичної ролі на сервері:", value="Щоб отримати роль 'Еротика' та перейти до каналу із контентом для дорослих натисніть на реакцію :slavetnyi_dypa: **Увага! Якщо вам немає 18+ років, не натискайте реакцію та перегляньте правила знову.**", inline=False)
+    embed.add_field(name=":video_game: Отримання ґеймерської ролі на сервері:", value="Щоб отримати роль 'Ґеймер' та перейти до каналу із обговоренням ігор натисніть на реакцію :slavetnyi_wha:", inline=False)
+    msg = await channel.send(embed=embed)
+    emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
+    emoji2 = discord.utils.get(bot.emojis, name='slavetnyi_monkas')
+    emoji3 = discord.utils.get(bot.emojis, name='slavetnyi_wha')
+    emoji4 = discord.utils.get(bot.emojis, name='slavetnyi_heyguys')
+    await msg.add_reaction(emoji4)
+    await msg.add_reaction(emoji2)
+    await msg.add_reaction(emoji)
+    await msg.add_reaction(emoji3)
+    await channel.message.delete()
+
 
 @bot.command(aliases=['префікс'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
