@@ -69,13 +69,12 @@ async def test(ctx, reaction):
     await channel.send(emoji)
     await msg.add_reaction(emoji)
     await channel.send(str(emoji))
-    if reaction.emoji == ':slavetnyi_dypa:':
-        await channel.send('Ok')
 
 @bot.event
 async def on_reaction_add(reaction, member):
     # if reaction.message.channel.id != '755473910115336192':
     #     return
+    emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
     if reaction.emoji == ':slavetnyi_dypa:':
         channel = bot.get_channel(755473910115336192)
         await channel.send('Ok')
