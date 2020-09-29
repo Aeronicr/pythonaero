@@ -62,8 +62,8 @@ async def setprefix(ctx, *, prefixes=""):
 @bot.command(pass_context=True, aliases=['roles'])
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
 async def ролі(ctx):
-    bot.get_channel('755473910115336192')
-    if channel.id == '755473910115336192':
+    channel = bot.get_channel()
+    if channel == '755473910115336192':
         embed = discord.Embed(color=0x09c7ed, title=':bangbang: Оримання ролей та доступу до каналів :bangbang:')
         embed.set_thumbnail(url="https://i.ibb.co/4s54fP2/admin-settings-male.png")
         embed.add_field(name=":baby:Отримання початкової ролі на сервері:", value="Щоб отримати роль 'Новоприбулий' та перейти до основних каналів натисніть на реакцію :slavetnyi_heyguys:", inline=False)
