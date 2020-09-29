@@ -64,10 +64,10 @@ async def test(ctx):
     embed = discord.Embed(color=0xff9900, title='Test')
     embed.add_field(name="Test", value="Test")
     msg = await ctx.send(embed=embed)
-    emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
-    emoji2 = discord.utils.get(bot.emojis, name='video_game')
+    # emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
+    emoji = discord.utils.get(bot.emojis, name='video_game')
     await msg.add_reaction(emoji)
-    await msg.add_reaction(emoji2)
+    # await msg.add_reaction(emoji2)
 
 @bot.event
 async def on_reaction_add(reaction, member):
