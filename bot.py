@@ -68,6 +68,7 @@ async def test(ctx):
     channel = bot.get_channel(755473910115336192)
     await channel.send(emoji)
     await msg.add_reaction(emoji)
+    await channel.send(str(emoji))
 
 @bot.event
 async def on_reaction_add(reaction, member):
