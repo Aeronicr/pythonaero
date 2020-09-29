@@ -97,7 +97,7 @@ async def on_raw_reaction_add(payload):
     role = guild.get_role(736861051001372673)
     if payload.emoji.name == EMOJI:
             await member.add_roles(role)
-            await bot.send(MESSAGE)
+            await channel.send(MESSAGE)
 
 
 
