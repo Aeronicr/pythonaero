@@ -59,8 +59,8 @@ async def setprefix(ctx, *, prefixes=""):
 
 
 
-@bot.command(pass_context=True)
-async def test(ctx):
+@bot.command(pass_context=True, aliases=['roles'])
+async def ролі(ctx):
     embed = discord.Embed(color=0x09c7ed, title=':bangbang: Оримання ролей та доступу до каналів :bangbang:')
     embed.set_thumbnail(url="https://i.ibb.co/4s54fP2/admin-settings-male.png")
     embed.add_field(name=":baby:Отримання початкової ролі на сервері:", value="Щоб отримати роль 'Новоприбулий' та перейти до основних каналів натисніть на реакцію :slavetnyi_heyguys:", inline=False)
@@ -76,11 +76,12 @@ async def test(ctx):
     await msg.add_reaction(emoji2)
     await msg.add_reaction(emoji)
     await msg.add_reaction(emoji3)
+    await ctx.message.delete()
 
 @bot.event
 async def on_reaction_add(reaction, member):
-    # if reaction.message.channel.id != '755473910115336192':
-    #     return
+    if reaction.message.channel.id != '755473910115336192':
+        return
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
         await member.add_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
     elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
@@ -92,8 +93,8 @@ async def on_reaction_add(reaction, member):
 
 @bot.event
 async def on_reaction_remove(reaction, member):
-    # if reaction.message.channel.id != '755473910115336192':
-    #     return
+    if reaction.message.channel.id != '755473910115336192':
+        return
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
         await member.remove_roles(discord.utils.get(member.guild.roles, name='Еротика'))
     elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
