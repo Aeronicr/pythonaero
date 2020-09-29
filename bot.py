@@ -31,6 +31,9 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
     await channel.send(embed=embed)
+    channel2 = bot.get_channel(736915083820531822)
+    await channel2.send('.del 2')
+    await channel2.send('.ролі')
 
 
 @bot.command(aliases=['префікс'])
