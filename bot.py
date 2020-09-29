@@ -39,7 +39,7 @@ async def on_ready():
     # embed.add_field(name=":underage: Отримання еротичної ролі на сервері:", value="Щоб отримати роль 'Еротика' та перейти до каналу із контентом для дорослих натисніть на реакцію :slavetnyi_dypa: **Увага! Якщо вам немає 18+ років, не натискайте реакцію та перегляньте правила знову.**", inline=False)
     # embed.add_field(name=":video_game: Отримання ґеймерської ролі на сервері:", value="Щоб отримати роль 'Ґеймер' та перейти до каналу із обговоренням ігор натисніть на реакцію :slavetnyi_wha:", inline=False)
     # msg = await channel.send(embed=embed)
-    msg = await bot.get_message(760570297739902977)
+    msg = await channel.fetch_message(760570297739902977)
     emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
     emoji2 = discord.utils.get(bot.emojis, name='slavetnyi_monkas')
     emoji3 = discord.utils.get(bot.emojis, name='slavetnyi_wha')
@@ -48,6 +48,14 @@ async def on_ready():
     await msg.add_reaction(emoji2)
     await msg.add_reaction(emoji)
     await msg.add_reaction(emoji3)
+    if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
+    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Політика'))
+    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
+    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
 
     # msg = await channel.fetch_message(760566507737579540)
     # msg = await channel.send("Ok")
