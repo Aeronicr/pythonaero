@@ -83,12 +83,12 @@ async def on_reaction_add(reaction, member):
     #     return
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
         await member.add_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
-    # if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
-    #     await member.add_roles(discord.utils.get(member.guild.roles, name='Політика'))
-    # if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
-    #     await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
-    # if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
-    #     await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
+    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Політика'))
+    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
+    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
+        await member.add_roles(discord.utils.get(member.guild.roles, name='Геймер'))
 
 @bot.event
 async def on_reaction_remove(reaction, member):
@@ -96,12 +96,12 @@ async def on_reaction_remove(reaction, member):
     #     return
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
         await member.remove_roles(discord.utils.get(member.guild.roles, name='Еротика'))
-    # if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
-    #     await member.remove_roles(discord.utils.get(member.guild.roles, name='Політика'))
-    # if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
-    #     await member.remove_roles(discord.utils.get(member.guild.roles, name='Геймер'))
-    # if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
-    #     await member.remove_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
+    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_monkas'):
+        await member.remove_roles(discord.utils.get(member.guild.roles, name='Політика'))
+    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_wha'):
+        await member.remove_roles(discord.utils.get(member.guild.roles, name='Геймер'))
+    elif reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_heyguys'):
+        await member.remove_roles(discord.utils.get(member.guild.roles, name='Новоприбулий'))
 
 
 bot.remove_command("help")
