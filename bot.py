@@ -76,7 +76,7 @@ async def on_reaction_add(reaction, member):
     # channel = bot.get_channel(755473910115336192)
     # await channel.send('Ok')
     # await member.add_roles(discord.utils.get(member.guild.roles, name='Еротика'))
-    await reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa')
+    await channel.send(reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'))
     if reaction.emoji == discord.utils.get(bot.emojis, name='slavetnyi_dypa'):
         channel = bot.get_channel(755473910115336192)
         await channel.send('Ok')
