@@ -32,7 +32,8 @@ async def on_ready():
     embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
     await channel.send(embed=embed)
 
-    msg = await channel.fetch_message(760566507737579540)
+    # msg = await channel.fetch_message(760566507737579540)
+    msg = await channel.send("Ok")
     emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
     emoji2 = discord.utils.get(bot.emojis, name='slavetnyi_monkas')
     emoji3 = discord.utils.get(bot.emojis, name='slavetnyi_wha')
