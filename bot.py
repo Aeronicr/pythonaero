@@ -66,7 +66,8 @@ async def test(ctx):
     msg = await ctx.send(embed=embed)
     emoji = discord.utils.get(bot.emojis, name='slavetnyi_dypa')
     emoji2 = discord.utils.get(bot.emojis, name='slavetnyi_monkas')
-    await msg.add_reaction(emoji, emoji2)
+    await msg.add_reaction(emoji)
+    await msg.add_reaction(emoji2)
 
 @bot.event
 async def on_reaction_add(reaction, member):
