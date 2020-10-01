@@ -14,7 +14,7 @@ async def determine_prefix(bot, message):
         return custom_prefixes.get(guild.id, default_prefixes)
     else:
         return default_prefixes
-initial_extensions = ['fun', 'animals', 'info', 'admin']
+initial_extensions = ['fun', 'animals', 'info', 'admin', 'fan']
 bot = commands.Bot(command_prefix = determine_prefix, description='A Rewrite Cog Example')
 if __name__ == '__main__':
     for extension in initial_extensions:
