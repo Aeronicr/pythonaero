@@ -7,9 +7,10 @@ class Fan(commands.Cog, name="Fan"):
         self.bot = bot
 
     @commands.command()
-    async def послати(self, ctx,*, message):
-        target_channel = bot.get_channel("412678093006831617")
-        await ctx.send(channel, message)
+    async def послати(self, member, ctx,*, message):
+        for channel in member.guild.channels:
+            if str(channel) == "славетна-флудильня":
+                await channel.send(message)
 
 
 
