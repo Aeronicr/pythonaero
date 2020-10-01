@@ -12,6 +12,7 @@ class Fan(commands.Cog, name="Fan"):
             if str(channel) == "славетна-флудильня":
                 await channel.send(message)
                 await message.delete() 
+                await message.channel.purge()
 
 
 
