@@ -1,10 +1,6 @@
 import discord
 from discord.ext import commands
-from discord.ext.commands import has_permissions, CheckFailure
-from discord.utils import get
-import asyncio
-import typing
-from typing import Optional
+
 
 
 class Fan(commands.Cog, name="Fan"):
@@ -13,10 +9,10 @@ class Fan(commands.Cog, name="Fan"):
 
     @commands.command()
     # async def послати(self, member,*, message):
-    async def послати(self, ctx, *, message):
+    async def послати(self, ctx, guild, *, message):
         # for channel in member.guild.channels:
         #     if str(channel) == "славетна-флудильня":
-                channel = discord.utils.get(member.guild.roles, name='Троляка')
+                channel = discord.utils.get(guild.text_channels, name="Славетна-флудильня")
                 await channel.send(message)
                 
 
