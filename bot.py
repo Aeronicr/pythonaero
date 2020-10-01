@@ -104,7 +104,7 @@ async def плей(ctx, url):
 
     author = ctx.message.author
     voice_channel = author.voice_channel
-    vc = await channel.connect()
+    vc = await voice_channel.connect()
 
     player = await vc.create_ytdl_player(url)
     player.start()
