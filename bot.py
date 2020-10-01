@@ -99,6 +99,16 @@ async def on_raw_reaction_add(payload):
             await member.add_roles(role)
             await channel.send(MESSAGE)
 
+@bot.command(pass_context=True)
+async def плей(ctx, url):
+
+    author = ctx.message.author
+    voice_channel = author.voice_channel
+    vc = await client.join_voice_channel(voice_channel)
+
+    player = await vc.create_ytdl_player(url)
+    player.start()
+
 
 
 bot.remove_command("help")
