@@ -7,11 +7,11 @@ class Fan(commands.Cog, name="Fan"):
         self.bot = bot
 
     @commands.command()
-    async def послати(self, member,*, message):
+    async def послати(self, member, ctx,*, message):
         for channel in member.guild.channels:
             if str(channel) == "славетна-флудильня":
                 await channel.send(message)
-                await channel.message.delete()
+                await ctx.message.delete()
 
 
 
