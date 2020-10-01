@@ -12,7 +12,7 @@ class Fan(commands.Cog, name="Fan"):
     async def послати(self, ctx, *, message):
         # for channel in member.guild.channels:
         #     if str(channel) == "славетна-флудильня":
-                channel = discord.utils.get(guild.text_channels, name="Славетна-флудильня")
+                channel = discord.utils.get(server.channels, name="Славетна-флудильня") 
                 await channel.send(message)
                 
 
