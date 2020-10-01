@@ -15,4 +15,4 @@ class Fan(commands.Cog, name="Fan"):
 
 
 def setup(bot):
-    bot.add_cog(Info(bot))
+    bot.add_cog(Fan(bot))
