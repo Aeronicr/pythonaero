@@ -36,6 +36,8 @@ async def on_ready():
 @bot.event
 async def on_guild_join(guild):
     embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
+    category = guild.categories[0]
+    channel = category.channels[0]
     await channel.send(embed=embed)
 
     
