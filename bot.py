@@ -29,6 +29,12 @@ async def on_ready():
     activity = discord.Game(name="Захоплення світу")
     channel = bot.get_channel(755473910115336192)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
+    await channel.send("Бота перезавантажено")
+    # embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
+    # await channel.send(embed=embed)
+
+@bot.event
+async def on_guild_join(guild):
     embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
     await channel.send(embed=embed)
 

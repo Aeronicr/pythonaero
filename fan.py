@@ -9,10 +9,9 @@ class Fan(commands.Cog, name="Fan"):
 
     @commands.command()
     # async def послати(self, member,*, message):
-    async def послати(self, ctx, *, message):
-        # for channel in member.guild.channels:
-        #     if str(channel) == "славетна-флудильня":
-                channel = discord.utils.get(guild.text_channels, name="Славетна-флудильня")
+    async def послати(self, member, *, message):
+        for channel in member.guild.channels:
+            if str(channel) == "славетна-флудильня":
                 await channel.send(message)
                 
 
