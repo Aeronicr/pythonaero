@@ -14,7 +14,7 @@ class Fan(commands.Cog, name="Fan"):
         # for channel in member.guild.channels:
         #     if str(channel) == "славетна-флудильня":
         # self.channel = utils.get(self.get_all_channels(), name='Славетна-флудильня')
-        channel = discord.utils.get(guild.text_channels, name="Славетна-флудильня")
+        self.channel = discord.utils.get(self.guild.text_channels, name="Славетна-флудильня")
         await channel.send(message)
                 
 
