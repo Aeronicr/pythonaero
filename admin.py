@@ -113,11 +113,9 @@ class Admin(commands.Cog, name="Info"):
                 messages.append(message)
 
         await channel.delete_messages(messages)
-        for amount in range(1,5):
-            await ctx.send(f'{amount} повідомлення видалено.')
+        while i in range(5,21) or i in range(25,31) or i in range(35,41):
+            await ctx.send(f'{amount} повідомлень видалено.')
             break
-        # elif amount == 5:
-        #     await ctx.send(f'{amount} повідомленнь видалено.')
         
 
 
