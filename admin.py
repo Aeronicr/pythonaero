@@ -86,8 +86,7 @@ class Admin(commands.Cog, name="Info"):
             await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
-    @has_permissions(administrator=True, manage_messages=True)
+    @commands.command(pass_context = True)
     async def one (self, ctx, member:discord.Member = None, reason=None):
         role_names = (str(r.name) for r in ctx.guild.roles)
         for role in [r for r in ctx.guild.roles if r.name in role_names]:
