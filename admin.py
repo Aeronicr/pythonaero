@@ -89,7 +89,7 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
     @has_permissions(administrator=True, manage_messages=True)
     async def mute (self, ctx, member:discord.Member = None, reason=None):
-        modRole1 = [str(r.name) for r in ctx.guild.roles][-1]
+        modRole1 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole2 = [str(r.name) for r in ctx.guild.roles][-2]
         await ctx.send(modRole1)
         await ctx.send(modRole2)
