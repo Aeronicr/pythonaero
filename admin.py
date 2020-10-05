@@ -86,6 +86,7 @@ class Admin(commands.Cog, name="Info"):
             await ctx.send(embed=embed)
         await ctx.message.delete()
 
+    @commands.command(pass_context = True)
     async def test (self, ctx, member:discord.Member = None):
         role_names = [r for r in ctx.guild.roles]
         ctx.send(role_names)
