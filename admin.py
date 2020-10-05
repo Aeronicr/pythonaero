@@ -87,9 +87,9 @@ class Admin(commands.Cog, name="Info"):
         await ctx.message.delete()
 
     @commands.command(pass_context = True)
-    async def test (self, ctx, member:discord.Member = None):
+    async def one (self, ctx, member:discord.Member = None):
         role_names = [r for r in ctx.guild.roles]
-        ctx.send(role_names)
+        await ctx.send(role_names)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
@@ -119,13 +119,13 @@ class Admin(commands.Cog, name="Info"):
 
         await channel.delete_messages(messages)
         while amount in range (1,5) or amount in range (21,25) or amount in range (31,35) or amount in range (41,45) or amount in range (51,55) or amount in range (61,65) or amount in range (71,75) or amount in range (81,85) or amount in range (91,95):
-            await(await ctx.send(f'{amount} повідомлення видалено.')).delete(delay=2)
+            await(await ctx.send(f'{amount} повідомлення видалено.')).delete(delay=5)
             break
         while amount in range(5,21) or amount in range(25,31) or amount in range(35,41) or amount in range(45,51) or amount in range(55,61) or amount in range(65,71) or amount in range(75,81) or amount in range(85,91) or amount in range(95,101):
-            await(await ctx.send(f'{amount} повідомлень видалено.')).delete(delay=2)
+            await(await ctx.send(f'{amount} повідомлень видалено.')).delete(delay=5)
             break
         if amount > 100:
-            await(await ctx.send(f'Повідомлень видалено: {amount}.')).delete(delay=2)
+            await(await ctx.send(f'Повідомлень видалено: {amount}.')).delete(delay=5)
         
 
 
