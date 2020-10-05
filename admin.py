@@ -89,8 +89,7 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True)
     async def one (self, ctx, member:discord.Member = None, reason=None):
         role_names = (str(r.name) for r in ctx.guild.roles)
-        await member.remove_roles(*role_names)
-        await ctx.send(f'Removed **all** experimental roles.')
+        await ctx.send(role_names)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
