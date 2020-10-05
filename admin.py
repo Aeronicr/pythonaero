@@ -94,9 +94,10 @@ class Admin(commands.Cog, name="Info"):
         await ctx.send(modRole1)
         await ctx.send(modRole2)
         if modRole1.mention == member.top_role.mention or modRole2.mention == member.top_role.mention:
-            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
-            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
+            # embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
+            # embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            # await ctx.send(embed=embed)
+            await ctx.send("OK")
         else:
             ctx.send("Йди до дупи")
         # else:
