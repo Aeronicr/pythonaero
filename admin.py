@@ -113,7 +113,7 @@ class Admin(commands.Cog, name="Info"):
                 messages.append(message)
 
         await channel.delete_messages(messages)
-        while i in range(5,21) or i in range(25,31) or i in range(35,41):
+        while amount  in range(5,21) or amount  in range(25,31) or amount  in range(35,41):
             await ctx.send(f'{amount} повідомлень видалено.')
             break
         
