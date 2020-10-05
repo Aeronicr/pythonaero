@@ -91,7 +91,7 @@ class Admin(commands.Cog, name="Info"):
         role_names = [str(r.name) for r in ctx.guild.roles]
         await ctx.send(role_names)
         for role in [r for r in ctx.guild.roles if r.name in role_names]:
-            await ctx.send(role)
+            await member.remove_roles(role)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
