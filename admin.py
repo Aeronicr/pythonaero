@@ -89,15 +89,12 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True)
     async def one (self, ctx, member:discord.Member = None):
         role_names = (str(r.name) for r in ctx.guild.roles)
-        roles = tuple(get(ctx.guild.roles, name=n) for n in role_names)
-        await ctx.send (roles)
-        await ctx.send (*roles)
-        for m in ctx.guild.members:
+        for role in [r for r in ctx.guild.roles if r.name in role_names]:
             try:
-                await member.remove_roles(*roles)
+                await member.remove_roles()
             except:
-                print(f"Couldn't remove roles from {m}")
-        await ctx.send(f'Ролі видалено.')
+                await ctx.send(f"Couldn't delete {role.name} ({role.id}).")
+        await ctx.send("Deleted roles.")
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
