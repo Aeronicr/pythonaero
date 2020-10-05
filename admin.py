@@ -86,15 +86,21 @@ class Admin(commands.Cog, name="Info"):
             await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.command(pass_context = True)
-    async def one (self, ctx, member:discord.Member = None):
-        role_names = (str(r.name) for r in ctx.guild.roles)
-        for role in [r for r in ctx.guild.roles if r.name in role_names]:
-            try:
-                await member.remove_roles(role)
-            except:
-                await ctx.send(f"Couldn't delete {role.name} ({role.id}).")
-        await ctx.send("Deleted roles.")
+    @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
+    @has_permissions(administrator=True, manage_messages=True)
+    async def mute (self, ctx, member:discord.Member = None, reason=None):
+        modRole1 = [str(r.name) for r in ctx.guild.roles][-1]
+        modRole2 = [str(r.name) for r in ctx.guild.roles][-2]
+        if modRole1.mention == member.top_role.mention or modRole2.mention == member.top_role.mention:
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        else:
+            role_names = (str(r.name) for r in ctx.guild.roles)
+            for role in [r for r in ctx.guild.roles if r.name in role_names]:
+                try:
+                    await member.remove_roles(role)
+            await ctx.send("Deleted roles.")
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
