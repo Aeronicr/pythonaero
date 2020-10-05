@@ -92,6 +92,8 @@ class Admin(commands.Cog, name="Info"):
         for role in [r for r in ctx.guild.roles if r.name in role_names]:
             try:
                 await member.remove_roles(role)
+            except:
+                await print(f"Couldn't delete {role.name} ({role.id}).")
         await ctx.send("Deleted roles.")
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
