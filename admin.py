@@ -88,13 +88,16 @@ class Admin(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True)
     async def one (self, ctx, member:discord.Member = None, reason=None):
-        # role_names = [str(r.name) for r in ctx.guild.roles]
-        # for role in [r for r in ctx.guild.roles if r.name in role_names]:
-        #     await member.remove_roles(*role)
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
-        await ctx.send(role)
-        await member.remove_roles(*role)
+        modRole1 = [role for role in member.roles][-1]
+        if modRole1 == member.top_role.mention:
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send(role)
+            await member.remove_roles(*role)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
