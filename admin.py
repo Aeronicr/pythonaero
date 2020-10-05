@@ -88,7 +88,7 @@ class Admin(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True)
     async def one (self, ctx, member:discord.Member = None, reason=None):
-        role_names = (str(r.name) for r in ctx.guild.roles)
+        role_names = ("bot maker")
         roles = tuple(get(ctx.guild.roles, name=n) for n in role_names)
         await ctx.send(role_names)
         await ctx.send(roles)
