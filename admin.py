@@ -90,7 +90,7 @@ class Admin(commands.Cog, name="Info"):
     async def one (self, ctx, member:discord.Member = None, reason=None):
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
-        modRole1 = [role for role in member.roles][-1]
+        modRole1 = [str(r.name) for r in ctx.guild.roles]
         await ctx.send(modRole1)
         await ctx.send(member.top_role.mention == modRole1)
         # if modRole1 == member.top_role.mention:
