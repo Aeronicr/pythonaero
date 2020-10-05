@@ -55,44 +55,46 @@ class Admin(commands.Cog, name="Info"):
             await ctx.guild.kick(member, reason=reason)
         await ctx.message.delete()
 
-    # @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
-    # @has_permissions(administrator=True, manage_messages=True)
-    # async def mute (self, ctx, time: typing.Optional[int], member:discord.Member = None, reason=None):
-    #     modRole5 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
-    #     modRole6 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
-    #     modRole7 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
-    #     if modRole5.mention == member.top_role.mention or modRole6.mention == member.top_role.mention or modRole7.mention == member.top_role.mention:
-    #         embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
-    #         embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-    #         await ctx.send(embed=embed)
-    #     else:
-    #         role = discord.utils.get(member.guild.roles, name='Троляка')
-    #         await member.add_roles(role)
-    #         embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
-    #         embed.set_thumbnail(url=member.avatar_url)
-    #         if reason == None:
-    #             reason = "<причину блокування не вказано>"
-    #         if time == None:
-    #             time = "<час блокування не вказано>"
-    #         embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} хвилин(у)!", value="Уважно прочитайте правила серверу.", inline=False)
-    #         embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
-    #         await ctx.send(embed=embed)
-    #         await asyncio.sleep(time*60)
-    #         await member.remove_roles(role)
-    #         embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
-    #         embed.set_thumbnail(url=member.avatar_url)
-    #         embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
-    #         embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
-    #         await ctx.send(embed=embed)
-    #     await ctx.message.delete()
+    @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
+    @has_permissions(administrator=True, manage_messages=True)
+    async def mute (self, ctx, time: typing.Optional[int], member:discord.Member = None, reason=None):
+        modRole5 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
+        modRole6 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
+        modRole7 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
+        if modRole5.mention == member.top_role.mention or modRole6.mention == member.top_role.mention or modRole7.mention == member.top_role.mention:
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        else:
+            role = discord.utils.get(member.guild.roles, name='Троляка')
+            await member.add_roles(role)
+            embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
+            embed.set_thumbnail(url=member.avatar_url)
+            if reason == None:
+                reason = "<причину блокування не вказано>"
+            if time == None:
+                time = "<час блокування не вказано>"
+            embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} хвилин(у)!", value="Уважно прочитайте правила серверу.", inline=False)
+            embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+            await asyncio.sleep(time*60)
+            await member.remove_roles(role)
+            embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
+            embed.set_thumbnail(url=member.avatar_url)
+            embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
+            embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
     @has_permissions(administrator=True, manage_messages=True)
-    async def mute (self, ctx, member:discord.Member = None, reason=None):
+    async def one (self, ctx, member:discord.Member = None, reason=None):
         role_names = (str(r.name) for r in ctx.guild.roles)
         for role in [r for r in ctx.guild.roles if r.name in role_names]:
             try:
                 await member.remove_roles(role)
+            except:
+                await ctx.send(f"Couldn't delete {role.name} ({role.id}).")
         await ctx.send("Deleted roles.")
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
