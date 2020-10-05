@@ -56,7 +56,7 @@ class Admin(commands.Cog, name="Info"):
         await ctx.message.delete()
 
     @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
-    @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
+    @has_permissions(administrator=True, manage_messages=True)
     async def mute (self, ctx, time: typing.Optional[int], member:discord.Member = None, reason=None):
         modRole5 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
         modRole6 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
@@ -85,6 +85,10 @@ class Admin(commands.Cog, name="Info"):
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
         await ctx.message.delete()
+
+    async def test (self, ctx, member:discord.Member = None):
+        role_names = [r for r in ctx.guild.roles]
+        ctx.send(role_names)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
