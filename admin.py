@@ -92,7 +92,7 @@ class Admin(commands.Cog, name="Info"):
         # for role in [r for r in ctx.guild.roles if r.name in role_names]:
         #     await member.remove_roles(*role)
         member = ctx.author if not member else member
-        roles = [role.name for role in member.roles]
+        roles = [role.name for role in member.roles][1:]
         await ctx.send(roles)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
