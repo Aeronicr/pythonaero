@@ -93,7 +93,7 @@ class Admin(commands.Cog, name="Info"):
             try:
                 await member.remove_roles(role)
             except:
-                await ctx.send(f"Couldn't delete {role.name} ({role.id}).")
+                await ctx.send(f"")
         await ctx.send("Deleted roles.")
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
