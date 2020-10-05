@@ -90,7 +90,7 @@ class Admin(commands.Cog, name="Info"):
     async def one (self, ctx, member:discord.Member = None, reason=None):
         role_names = [str(r.name) for r in ctx.guild.roles]
         await ctx.send(role_names)
-        for role in [r for r in ctx.guild.roles if r.name in role_ids]:
+        for role in [r for r in ctx.guild.roles if r.name in role_names]:
             await ctx.send(role)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
