@@ -93,13 +93,13 @@ class Admin(commands.Cog, name="Info"):
         modRole1 = [role for role in member.roles][-1]
         await ctx.send(modRole1)
         await ctx.send(member.top_role.mention)
-        if modRole1 == member.top_role.mention:
-            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
-            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send(role)
-            await member.remove_roles(*role)
+        # if modRole1 == member.top_role.mention:
+        #     embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
+        #     embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+        #     await ctx.send(embed=embed)
+        # else:
+        #     await ctx.send(role)
+        #     await member.remove_roles(*role)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
