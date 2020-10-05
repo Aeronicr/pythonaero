@@ -93,10 +93,12 @@ class Admin(commands.Cog, name="Info"):
         modRole2 = [str(r.name) for r in ctx.guild.roles][-2]
         await ctx.send(modRole1)
         await ctx.send(modRole2)
-        # if modRole1.mention == member.top_role.mention or modRole2.mention == member.top_role.mention:
-        #     embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
-        #     embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-        #     await ctx.send(embed=embed)
+        if modRole1.mention == member.top_role.mention or modRole2.mention == member.top_role.mention:
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        else:
+            ctx.send("Йди до дупи")
         # else:
         #     role_names = (str(r.name) for r in ctx.guild.roles)
         #     for role in [r for r in ctx.guild.roles if r.name in role_names]:
