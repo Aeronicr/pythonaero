@@ -94,7 +94,7 @@ class Admin(commands.Cog, name="Info"):
         member = ctx.author if not member else member
         roles = [role.name for role in member.roles][1:]
         await ctx.send(roles)
-        await member.remove_roles(roles)
+        await member.remove_roles(*roles)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
