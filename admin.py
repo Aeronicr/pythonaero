@@ -90,6 +90,8 @@ class Admin(commands.Cog, name="Info"):
     async def one (self, ctx, member:discord.Member = None):
         role_names = (str(r.name) for r in ctx.guild.roles)
         roles = tuple(get(ctx.guild.roles, name=n) for n in role_names)
+        await ctx.send (roles)
+        await ctx.send (*roles)
         for m in ctx.guild.members:
             try:
                 await member.remove_roles(*roles)
