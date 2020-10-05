@@ -104,7 +104,7 @@ class Admin(commands.Cog, name="Info"):
             await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.command(pass_context=True, aliases=['del', 'очистити'])
+    @commands.command(pass_context=True, aliases=['del', 'очистити', 'чистити'])
     async def clear(self, ctx, amount):
         channel = ctx.message.channel
         messages = []
@@ -113,7 +113,10 @@ class Admin(commands.Cog, name="Info"):
                 messages.append(message)
 
         await channel.delete_messages(messages)
-        await ctx.send('Повідомлення видалено.')
+        if amount == 1 or 2 or 3 or 4 or 21 or 22 or 23 or 24 or 21 or 32 or 33 or 34:
+            await ctx.send(f'{amount} повідомлення видалено.')
+        else:
+            await ctx.send(f'{amount} повідомленнь видалено.')
         
 
 
