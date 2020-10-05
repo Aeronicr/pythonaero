@@ -114,10 +114,7 @@ class Admin(commands.Cog, name="Info"):
 
         await channel.delete_messages(messages)
         while amount in range (1,5) or amount in range (21,25) or amount in range (31,35) or amount in range (41,45) or amount in range (51,55) or amount in range (61,65) or amount in range (71,75) or amount in range (81,85) or amount in range (91,95):
-            message = await ctx.send(f'{amount} повідомлення видалено.')
-            await asyncio.sleep(1)
-            await ctx.send("Test")
-            await ctx.message.delete(message)
+            await(await ctx.send(f'{amount} повідомлення видалено.')).delete(delay=0.3)
             break
         while amount in range(5,21) or amount in range(25,31) or amount in range(35,41) or amount in range(45,51) or amount in range(55,61) or amount in range(65,71) or amount in range(75,81) or amount in range(85,91) or amount in range(95,101):
             await ctx.send(f'{amount} повідомлень видалено.')
