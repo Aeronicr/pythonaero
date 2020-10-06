@@ -172,7 +172,7 @@ class Info(commands.Cog, name="Info"):
                 await channel.send(embed=embed)
 
     @commands.command(pass_context = True , aliases=['запрошення'])
-    async def invite(ctx):
+    async def invite(self, ctx):
         invite = await ctx.channel.create_invite()
         await ctx.send(f"Запросити бота на сервер можна за посилання: {invite}")
 
