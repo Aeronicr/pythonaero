@@ -92,7 +92,7 @@ class Admin(commands.Cog, name="Info"):
         role = [role for role in member.roles][1:]
         a = [r.name for r in ctx.guild.roles][-1:]
         b = [role.name for role in member.roles][1:]
-        if set(b).issubset(a):
+        if set(a).issubset(b):
             await ctx.send("Батя")
         await ctx.send(a)
         await ctx.send(b)
