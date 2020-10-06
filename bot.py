@@ -110,9 +110,9 @@ async def on_raw_reaction_add(payload):
 
 @bot.command(pass_context=True)
 async def rolecreate(ctx):
-    guild = ctx.guild
+    # guild = ctx.guild
     perms = discord.Permissions(send_message=False)
-    await guild.create_role(name="MUTED", Permissions=perms)
+    await ctx.create_role(name="MUTED", Permissions=perms)
     await ctx.send(embed = discord.Embed(description = '''Роль додана''', color = 0x49FF33))
 
 
