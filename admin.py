@@ -89,7 +89,6 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True)
     async def one (self, ctx, time: typing.Optional[int], member:discord.Member = None, reason=None,):
         member = ctx.author if not member else member
-        s = [role for role in member.roles][1:]
         role = [role for role in member.roles][1:]
         await ctx.send(s)
         role_owner1 = [r.name for r in ctx.guild.roles][-1:]
@@ -118,10 +117,7 @@ class Admin(commands.Cog, name="Info"):
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
             await asyncio.sleep(time*60)
-            await ctx.send(s)
             await member.remove_roles(role)
-            await ctx.send(s)
-            await member.add_roles(s)
             embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
             embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
