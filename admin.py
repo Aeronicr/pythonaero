@@ -87,7 +87,7 @@ class Admin(commands.Cog, name="Info"):
         await ctx.message.delete()
 
     @commands.command(pass_context = True)
-    async def one (self, ctx, member:discord.Member = None, reason=None, time: typing.Optional[int]):
+    async def one (self, ctx, member:discord.Member = None, time: typing.Optional[int], reason=None,):
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
         role_owner1 = [r.name for r in ctx.guild.roles][-1:]
