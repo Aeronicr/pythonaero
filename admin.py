@@ -94,6 +94,8 @@ class Admin(commands.Cog, name="Info"):
         role_owner2 = [role.name for role in member.roles][1:]
         role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
         role_mod2 = [role.name for role in member.roles][1:]
+        await ctx.send(member.mention)
+        await ctx.send(ctx.author)
         if member.mention == ctx.author:
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
