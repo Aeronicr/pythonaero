@@ -68,14 +68,12 @@ async def ролі(ctx):
     await msg.add_reaction(emoji3)
     await ctx.message.delete()
 
-@bot.command(pass_context=True)
-async def rolecreate(ctx):
-    await ctx.send("ОК")
-    guild = ctx.guild
-    perms = discord.Permissions(send_message=False)
-    await message.guild.create_role(name="Lecturer")(name="MUTED", Permissions=perms)
-    await ctx.send(embed = discord.Embed(description = '''Роль додана''', color = 0x49FF33))
-    await ctx.send("ОК")
+@bot.command()
+async def modrole(ctx):
+    if get(ctx.guild.roles, name="AeroBot"):
+        await ctx.send("Role already exists")
+    else:
+        await ctx.guild.create_role(name="AeroBot", colour=discord.Colour(0x0062ff))
 
 @bot.event
 async def on_reaction_add(reaction, member):
