@@ -106,6 +106,8 @@ class Admin(commands.Cog, name="Info"):
             await member.remove_roles(*role)
             if reason == None:
                 reason = "<причину блокування не вказано>"
+            embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
+            embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} заглушено за {reason}!", value="Уважно прочитайте правила серверу.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
