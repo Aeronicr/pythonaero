@@ -70,7 +70,7 @@ async def ролі(ctx):
 
 @bot.command()
 async def modrole(ctx):
-    perms = discord.Permissions(send_messages=False, read_messages=True)
+    perms = discord.Permissions(send_messages=True, view_channel=True, read_messages=True, manage_guild=True)
     if get(ctx.guild.roles, name="AeroBot", permissions=perms):
         await ctx.send("Role already exists")
     else:
