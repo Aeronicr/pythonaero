@@ -89,8 +89,8 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True)
     async def one (self, ctx, time: typing.Optional[int], member:discord.Member = None, reason=None,):
         member = ctx.author if not member else member
+        s = [role for role in member.roles][1:]
         role = [role for role in member.roles][1:]
-        s = role
         await ctx.send(s)
         role_owner1 = [r.name for r in ctx.guild.roles][-1:]
         role_owner2 = [role.name for role in member.roles][1:]
