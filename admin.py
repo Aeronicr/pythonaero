@@ -90,8 +90,10 @@ class Admin(commands.Cog, name="Info"):
     async def one (self, ctx, member:discord.Member = None, reason=None):
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
-        a = [r.name for r in ctx.guild.roles][-1]
+        a = [r.name for r in ctx.guild.roles][-1:]
         b = [role.name for role in member.roles][1:]
+        if set(b).issubset(a):
+            await ctx.send("Батя")
         await ctx.send(a)
         await ctx.send(b)
         # if set([r.name for r in ctx.guild.roles][-1]).issubset([role.name for role in member.roles][1:]):
