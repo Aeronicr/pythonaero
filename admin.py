@@ -89,7 +89,7 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True)
     async def one (self, ctx, member:discord.Member = None, reason=None):
         member = ctx.author if not member else member
-        role = [role.name for role in member.roles][1:]
+        role = [role for role in member.roles][1:]
         await ctx.send(role)
         await member.remove_roles(*role)
 
