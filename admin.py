@@ -93,7 +93,7 @@ class Admin(commands.Cog, name="Info"):
         modRole = [r.name for r in ctx.guild.roles][-2:-1]
         await ctx.send(role)
         await ctx.send(modRole)
-        if modRole in role:
+        if set(modRole).issubset(role):
             await ctx.send("Ok")
         else:
             await ctx.send("No")
