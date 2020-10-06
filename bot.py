@@ -68,6 +68,14 @@ async def ролі(ctx):
     await msg.add_reaction(emoji3)
     await ctx.message.delete()
 
+@bot.command(pass_context=True)
+async def rolecreate(ctx):
+    await ctx.send("ОК")
+    # guild = ctx.guild
+    perms = discord.Permissions(send_message=False)
+    await ctx.create_role(name="MUTED", Permissions=perms)
+    await ctx.send(embed = discord.Embed(description = '''Роль додана''', color = 0x49FF33))
+
 @bot.event
 async def on_reaction_add(reaction, member):
     # if reaction.message.channel.id != '755473910115336192':
@@ -107,13 +115,6 @@ async def on_raw_reaction_add(payload):
     if payload.emoji.name == EMOJI:
             await member.add_roles(role)
             await channel.send(MESSAGE)
-
-@bot.command(pass_context=True)
-async def rolecreate(ctx):
-    # guild = ctx.guild
-    perms = discord.Permissions(send_message=False)
-    await ctx.create_role(name="MUTED", Permissions=perms)
-    await ctx.send(embed = discord.Embed(description = '''Роль додана''', color = 0x49FF33))
 
 
 
