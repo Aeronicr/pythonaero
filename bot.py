@@ -81,7 +81,7 @@ async def modrole(ctx):
 			'embed_links')
     permissions = discord.Permissions()
     permissions.update(**dict.fromkeys(permission_names, True))
-    if get(ctx.guild.roles, name="AeroBot", permissions=discord.Permissions(permissions)):
+    if get(ctx.guild.roles, name="AeroBot", permissions=permissions):
         await ctx.send("Role already exists")
     else:
         await ctx.guild.create_role(name="AeroBot", colour=discord.Colour(0xffffff))
