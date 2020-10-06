@@ -175,6 +175,7 @@ class Info(commands.Cog, name="Info"):
     async def invite(self, ctx):
         invite = await ctx.channel.create_invite()
         await ctx.send(f"Запрошення на сервервер: {invite}")
+        await ctx.message.delete()
 
 def setup(bot):
     bot.add_cog(Info(bot))
