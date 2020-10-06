@@ -72,7 +72,7 @@ async def ролі(ctx):
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
 async def modrole(ctx):
     permission_names = (
-			'read_messages',
+			'administrator',
 			'send_messages',
 			'read_message_history',
 			'external_emojis',
