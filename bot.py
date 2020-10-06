@@ -70,11 +70,11 @@ async def ролі(ctx):
 
 @bot.command()
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
-async def modrole(ctx):
-    if get(ctx.guild.roles, name="Aero"):
-        await ctx.send("Role already exists")
+async def роль(ctx):
+    if get(ctx.guild.roles, name="заглушено"):
+        await ctx.send("Роль вже існує на сервері")
     else:
-        await ctx.guild.create_role(name="AeroBot", permissions=Permissions.all(), colour=discord.Colour(0xffffff))
+        await ctx.guild.create_role(name="заглушено", permissions=Permissions.all(False), colour=discord.Colour(0x2e0404))
 
 @bot.event
 async def on_reaction_add(reaction, member):
