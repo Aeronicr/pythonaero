@@ -111,7 +111,7 @@ async def on_raw_reaction_add(payload):
 async def rolecreate(ctx):
     author = ctx.message.author
     # split the string to get the rolename to create
-    role_name = ctx.message.content.lower().split(".rolecreate ", maxsplit=1)[1]
+    role_name = "м'ют"
     # check if that role already exists
     check_for_duplicate = get(ctx.message.server.roles, name=role_name)
     if check_for_duplicate is not None: # if the role doesn't exist
