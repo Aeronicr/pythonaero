@@ -73,7 +73,7 @@ async def modrole(ctx):
     if get(ctx.guild.roles, name="AeroBot"):
         await ctx.send("Role already exists")
     else:
-        await role = ctx.guild.create_role(name="AeroBot", colour=discord.Colour(0xffffff))
+        role = await ctx.guild.create_role(name="AeroBot", colour=discord.Colour(0xffffff))
         await bot.add_roles(role)
 
 @bot.event
