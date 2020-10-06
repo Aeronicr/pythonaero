@@ -94,13 +94,7 @@ class Admin(commands.Cog, name="Info"):
         role_owner2 = [role.name for role in member.roles][1:]
         role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
         role_mod2 = [role.name for role in member.roles][1:]
-        await ctx.send(member.mention)
-        await ctx.send('@'+ctx.author)
-        if member.mention == ctx.author:
-            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе! :bangbang:')
-            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
-        elif set(role_mod1).issubset(role_mod2):
+        if set(role_mod1).issubset(role_mod2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити модератора серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
@@ -108,13 +102,13 @@ class Admin(commands.Cog, name="Info"):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити власника серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
-        # if set([r.name for r in ctx.guild.roles][-1]).issubset([role.name for role in member.roles][1:]):
-            # embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
-            # embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            # await ctx.send(embed=embed)
-        # else:
-        #     await ctx.send(role)
-        #     await member.remove_roles(*role)
+        else:
+            await member.remove_roles(*role)
+            if reason == None:
+                reason = "<причину блокування не вказано>"
+            embed.add_field(name=f"Користувача {member} заглушено за {reason}!", value="Уважно прочитайте правила серверу.", inline=False)
+            embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
