@@ -90,10 +90,9 @@ class Admin(commands.Cog, name="Info"):
     async def one (self, ctx, member:discord.Member = None, reason=None):
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
-        role2 = [role.mention for role in role]
+        modRole = [r for r in ctx.guild.roles][-2:]
         # if [role for role in member.roles][-2:] == 
         await ctx.send(role)
-        await ctx.send(role2)
         # await ctx.send(member.top_role.mention == modRole1)
         # if modRole1 == member.top_role.mention:
         #     embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
