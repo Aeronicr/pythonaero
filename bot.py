@@ -109,15 +109,8 @@ async def on_raw_reaction_add(payload):
 
 @bot.command(pass_context=True)
 async def rolecreate(ctx):
-    author = ctx.message.author
-    # split the string to get the rolename to create
-    role_name = "м'ют"
-    # check if that role already exists
-    check_for_duplicate = get(ctx.message.server.roles, name=role_name)
-    if check_for_duplicate is not None: # if the role doesn't exist
-        # create the role
-        role = await ctx.create_role(name=role_name, colour=discord.Colour(0x0000FF))
-        await author.add_roles(role)
+    role = await ctx.create_role(name=role_name, colour=discord.Colour(0x0000FF))
+    await ctx.send("Ok")
 
 
 
