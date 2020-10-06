@@ -90,16 +90,24 @@ class Admin(commands.Cog, name="Info"):
     async def one (self, ctx, member:discord.Member = None, reason=None):
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
-        a = [r.name for r in ctx.guild.roles][-1:]
-        b = [role.name for role in member.roles][1:]
-        if set(a).issubset(b):
-            await ctx.send("Батя")
+        role_owner1 = [r.name for r in ctx.guild.roles][-1:]
+        role_owner2 = [role.name for role in member.roles][1:]
+        role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
+        role_mod2 = [role.name for role in member.roles][1:]
+        if set(role_owner1).issubset(role_owner2):
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити власника серверу! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        elif set(role_mod1).issubset(role_mod2):
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити модератора серверу! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
         await ctx.send(a)
         await ctx.send(b)
         # if set([r.name for r in ctx.guild.roles][-1]).issubset([role.name for role in member.roles][1:]):
-        #     embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
-        #     embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-        #     await ctx.send(embed=embed)
+            # embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
+            # embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            # await ctx.send(embed=embed)
         # else:
         #     await ctx.send(role)
         #     await member.remove_roles(*role)
