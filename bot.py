@@ -73,7 +73,7 @@ async def rolecreate(ctx):
     await ctx.send("ОК")
     guild = ctx.guild
     perms = discord.Permissions(send_message=False)
-    await guild.create_role(name="MUTED", Permissions=perms)
+    await message.guild.create_role(name="Lecturer")(name="MUTED", Permissions=perms)
     await ctx.send(embed = discord.Embed(description = '''Роль додана''', color = 0x49FF33))
     await ctx.send("ОК")
 
