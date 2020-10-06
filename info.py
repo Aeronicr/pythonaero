@@ -174,7 +174,7 @@ class Info(commands.Cog, name="Info"):
     @commands.command(pass_context = True , aliases=['запрошення'])
     async def invite(self, ctx):
         invite = await ctx.channel.create_invite()
-        await ctx.send(f"Запрошення на сервервер: {invite}")
+        await ctx.send(f"Запрошення на сервер: {invite}")
         await ctx.message.delete()
 
 def setup(bot):
