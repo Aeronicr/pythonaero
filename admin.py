@@ -90,9 +90,7 @@ class Admin(commands.Cog, name="Info"):
     async def one (self, ctx, member:discord.Member = None, reason=None):
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
-        await ctx.send([r.name for r in ctx.guild.roles][-2:])
-        await ctx.send([role.name for role in member.roles][1:])
-        if set([r.name for r in ctx.guild.roles][-2:]).issubset([role.name for role in member.roles][1:]):
+        if set([r.name for r in ctx.guild.roles][-2:-1]).issubset([role.name for role in member.roles][1:]):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
