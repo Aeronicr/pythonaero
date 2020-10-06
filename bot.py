@@ -110,9 +110,8 @@ async def on_raw_reaction_add(payload):
 @bot.command(pass_context=True)
 async def rolecreate(ctx):
     role_name = "mute"
-    role = await create_role(name=role_name, colour=discord.Colour(0x0000FF))
+    role = await ctx.create_role(name=role_name, colour=discord.Colour(0x0000FF))
     await ctx.send(role)
-    await author.add_roles(role)
 
 
 
