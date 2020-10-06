@@ -171,7 +171,10 @@ class Info(commands.Cog, name="Info"):
                 embed.set_footer(text=f"Бувай, {member}", icon_url='https://i.ibb.co/3Ft4mCB/buy.png')
                 await channel.send(embed=embed)
 
-
+    @commands.command(pass_context = True , aliases=['запрошення'])
+    async def invite(ctx):
+        invite = await ctx.channel.create_invite()
+        await ctx.send(f"Запросити бота на сервер можна за посилання: {invite}")
 
 def setup(bot):
     bot.add_cog(Info(bot))
