@@ -69,7 +69,7 @@ async def ролі(ctx):
     await ctx.message.delete()
 
 @bot.command()
-async def modrole(ctx):
+async def modrole(ctx, bot):
     if get(ctx.guild.roles, name="AeroBot"):
         await ctx.send("Role already exists")
     else:
