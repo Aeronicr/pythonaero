@@ -4,6 +4,7 @@ import sys, traceback
 import os
 from discord.ext.commands import has_permissions
 from discord.utils import get
+from discord import Permissions
 
 custom_prefixes = {}
 default_prefixes = ['.']
