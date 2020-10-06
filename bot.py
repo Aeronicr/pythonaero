@@ -116,10 +116,11 @@ async def rolecreate(ctx):
     check_for_duplicate = get(ctx.message.server.roles, name=role_name)
     if check_for_duplicate is not None: # if the role doesn't exist
         # create the role
-        role = await bot.create_role(author.server, name=role_name, colour=discord.Colour(0x0000FF))
-        await bot.add_roles(author, role)
+        role = await author.server.create_role(name=role_name, colour=discord.Colour(0x0000FF))
+        await author.add_roles(role)
     else:
-        bot.send_message(ctx.message.channel, "That role already exists")
+        channel = category.channels[0]
+        channel.send_message("That role already exists")
 
 
 
