@@ -92,7 +92,7 @@ class Admin(commands.Cog, name="Info"):
         role = [role for role in member.roles][-1]
         modRole = [r.name for r in ctx.guild.roles][-2:-1]
         # if [role for role in member.roles][-2:] == 
-        await ctx.send(list(role))
+        await ctx.send(role)
         await ctx.send(modRole)
         await ctx.send (role==modRole)
         # await ctx.send(member.top_role.mention == modRole1)
