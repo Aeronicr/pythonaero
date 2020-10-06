@@ -119,6 +119,7 @@ async def rolecreate(ctx):
         role = await author.server.create_role(name=role_name, colour=discord.Colour(0x0000FF))
         await author.add_roles(role)
     else:
+        category = guild.categories[0]
         channel = category.channels[0]
         channel.send_message("That role already exists")
 
