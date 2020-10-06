@@ -95,8 +95,8 @@ class Admin(commands.Cog, name="Info"):
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
         else:
-        await ctx.send(role)
-        await member.remove_roles(*role)
+            await ctx.send(role)
+            await member.remove_roles(*role)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
