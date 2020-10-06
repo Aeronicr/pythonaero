@@ -90,6 +90,7 @@ class Admin(commands.Cog, name="Info"):
     async def one (self, ctx, time: typing.Optional[int], member:discord.Member = None, reason=None,):
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
+        s = role
         role_owner1 = [r.name for r in ctx.guild.roles][-1:]
         role_owner2 = [role.name for role in member.roles][1:]
         role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
@@ -112,11 +113,12 @@ class Admin(commands.Cog, name="Info"):
                 time = "<час блокування не вказано>"
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
             embed.set_thumbnail(url=member.avatar_url)
-            embed.add_field(name=f"Користувача {member} заглушено за {reason}!", value="Уважно прочитайте правила серверу.", inline=False)
+            embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} хвилин!", value="Уважно прочитайте правила серверу.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
             await asyncio.sleep(time*60)
             await member.remove_roles(role)
+            await member.add_roles(s)
             embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
             embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
