@@ -102,8 +102,10 @@ class Admin(commands.Cog, name="Info"):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити модератора серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
-        await ctx.send(a)
-        await ctx.send(b)
+        elif member.mention == ctx.author:
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
         # if set([r.name for r in ctx.guild.roles][-1]).issubset([role.name for role in member.roles][1:]):
             # embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити себе та інших модераторів, а також користувачів, що вже є заглушеними! :bangbang:')
             # embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
