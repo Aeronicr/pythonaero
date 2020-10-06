@@ -74,7 +74,8 @@ async def роль(ctx):
     if get(ctx.guild.roles, name="заглушено"):
         await ctx.send("Роль вже існує на сервері")
     else:
-        await ctx.guild.create_role(name="заглушено", permissions=Permissions.all(False), colour=discord.Colour(0x2e0404))
+        perms = discord.Permissions(send_messages=False, read_messages=True, read_message_history=True)
+        await ctx.guild.create_role(name="заглушено", permissions=perm, colour=discord.Colour(0x2e0404))
 
 @bot.event
 async def on_reaction_add(reaction, member):
