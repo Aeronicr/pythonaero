@@ -71,7 +71,7 @@ async def ролі(ctx):
 @bot.command()
 @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
 async def роль(ctx):
-    if get(ctx.guild.roles, name="заглушено"):
+    if get(ctx.guild.roles, name="Покараний"):
         await ctx.send("Роль вже існує на сервері")
     else:
         perms = discord.Permissions(send_messages=False, read_messages=True, read_message_history=True)
