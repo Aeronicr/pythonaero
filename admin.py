@@ -116,7 +116,7 @@ class Admin(commands.Cog, name="Info"):
                 reason = "<причину блокування не вказано>"
             if time == None:
                 time = "до розглушення модераторами серверу"
-            elif time in numbers1 == True:
+            elif time in numbers1 = True:
                 case = 'хвилину'
             elif time in numbers2 == True:
                 case = 'хвилини'
