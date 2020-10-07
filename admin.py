@@ -88,13 +88,14 @@ class Admin(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True)
     @has_permissions(administrator=True, manage_messages=True)
-    async def one (self, ctx, member:discord.Member = None, reason=None, time : int = None):
+    async def one (self, ctx, member:discord.Member = None, time : int = None, reason=None):
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
         role_owner1 = [r.name for r in ctx.guild.roles][-1:]
         role_owner2 = [role.name for role in member.roles][1:]
         role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
         role_mod2 = [role.name for role in member.roles][1:]
+        case = None
         if set(role_mod1).issubset(role_mod2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити модератора серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
@@ -111,9 +112,11 @@ class Admin(commands.Cog, name="Info"):
                 reason = "<причину блокування не вказано>"
             if time == None:
                 time = "<час блокування не вказано>"
+            elif time == 1:
+                case = 'хвилину'
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
             embed.set_thumbnail(url=member.avatar_url)
-            embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} хвилин!", value="Уважно прочитайте правила серверу.", inline=False)
+            embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} {case}!", value="Уважно прочитайте правила серверу.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
             await asyncio.sleep(time*60)
