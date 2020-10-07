@@ -114,7 +114,7 @@ class Admin(commands.Cog, name="Info"):
         modRole5 = [r for r in ctx.guild.roles if r.name == "Покараний"][0]
         member = ctx.author if not member else member
         if modRole5.mention == member.top_role.mention:
-            await member.remove_roles(discord.utils.get(member.guild.roles, name='Троляка'))
+            await member.remove_roles(discord.utils.get(member.guild.roles, name='Покараний'))
             embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
             embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
