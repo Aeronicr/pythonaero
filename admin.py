@@ -115,6 +115,7 @@ class Admin(commands.Cog, name="Info"):
         role = [role.name for role in member.roles][1:]
         await ctx.send(role)
         await ctx.send(discord.utils.get(member.guild.roles, name='Покараний'))
+        await ctx.send(member.top_role.mention)
 
 
 
