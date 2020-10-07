@@ -116,7 +116,7 @@ class Admin(commands.Cog, name="Info"):
         await ctx.send(role)
         await ctx.send(discord.utils.get(member.guild.roles, name='Покараний'))
         await ctx.send(member.top_role.mention)
-        await ctx.send(discord.utils.get(member.guild.roles, name='Покараний')==member.top_role.mention)
+        await ctx.send(discord.utils.get(member.guild.roles, name='Покараний')==role)
 
 
 
