@@ -112,7 +112,7 @@ class Admin(commands.Cog, name="Info"):
     async def unmute (self, ctx, member:discord.Member = None):
         await ctx.message.delete()
         member = ctx.author if not member else member
-        role = [role for role in member.roles][1:]
+        role = [role.name for role in member.roles][1:]
         await ctx.send(role)
         await ctx.send(discord.utils.get(member.guild.roles, name='Покараний'))
 
