@@ -88,7 +88,7 @@ class Admin(commands.Cog, name="Info"):
 
     @commands.command(pass_context = True)
     @has_permissions(administrator=True, manage_messages=True)
-    async def one (self, ctx, member:discord.Member = None, reason=None, time = None):
+    async def one (self, ctx, member:discord.Member = None, reason=None, time : int = None):
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
         role_owner1 = [r.name for r in ctx.guild.roles][-1:]
@@ -111,8 +111,6 @@ class Admin(commands.Cog, name="Info"):
                 reason = "<причину блокування не вказано>"
             if time == None:
                 time = "<час блокування не вказано>"
-            elif time.isdigit()==False:
-                time = int(time)
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
             embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} хвилин!", value="Уважно прочитайте правила серверу.", inline=False)
