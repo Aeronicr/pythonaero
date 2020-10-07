@@ -114,6 +114,7 @@ class Admin(commands.Cog, name="Info"):
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
         await ctx.send(role)
+        await ctx.send(discord.utils.get(member.guild.roles, name='Покараний'))
 
 
 
