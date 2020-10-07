@@ -111,6 +111,7 @@ class Admin(commands.Cog, name="Info"):
             await member.add_roles(role)
             if reason == None:
                 reason = "<причину блокування не вказано>"
+                case = ''
             if time == None:
                 time = "на час до розблокування модераторами"
             elif time == 1 or time == 21 or time == 31 or time == 41:
