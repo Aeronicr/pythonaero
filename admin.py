@@ -111,7 +111,7 @@ class Admin(commands.Cog, name="Info"):
                 reason = "<причину блокування не вказано>"
             if time == None:
                 time = "<час блокування не вказано>"
-            elif time % 2 != 1 or time % 2 != 0:
+            elif time.is_integer()==False:
                 time = int(time)
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
             embed.set_thumbnail(url=member.avatar_url)
