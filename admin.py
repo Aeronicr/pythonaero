@@ -127,7 +127,7 @@ class Admin(commands.Cog, name="Info"):
             embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} {case}!", value="Уважно прочитайте правила серверу.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
-            if time != 0 or time !=None
+            if time != 0 or time !=None:
                 await asyncio.sleep(time*60)
                 await member.remove_roles(role)
                 embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
