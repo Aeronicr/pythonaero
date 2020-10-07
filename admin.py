@@ -67,16 +67,8 @@ class Admin(commands.Cog, name="Info"):
         role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
         role_mod2 = [role.name for role in member.roles][1:]
         case = None
-        if set(role_mod1).issubset(role_mod2):
-            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити модератора серверу! :bangbang:')
-            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
-        elif set(role_owner1).issubset(role_owner2):
-            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити власника серверу! :bangbang:')
-            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
-        else:
-            await member.remove_roles(*role)
+        
+        
             role = discord.utils.get(member.guild.roles, name='Покараний')
             await member.add_roles(role)
             if reason == None:
@@ -111,20 +103,40 @@ class Admin(commands.Cog, name="Info"):
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def unmute (self, ctx, member:discord.Member = None):
         await ctx.message.delete()
-        modRole5 = [r for r in ctx.guild.roles if r.name == "Покараний"][0]
         member = ctx.author if not member else member
-        if modRole5.mention == member.top_role.mention:
-            await member.remove_roles(discord.utils.get(member.guild.roles, name='Покараний'))
+        role = [role for role in member.roles][1:]
+        role_owner1 = [r.name for r in ctx.guild.roles][-1:]
+        role_owner2 = [role.name for role in member.roles][1:]
+        role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
+        role_mod2 = [role.name for role in member.roles][1:]
+        if set(role_mod1).issubset(role_mod2):
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете розглушити модератора серверу! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        elif set(role_owner1).issubset(role_owner2):
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете розглушити власника серверу! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        else:
+            await member.remove_roles(*role)
             embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
             embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
-        else:
-            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Користувач {member.name} не є заглушеним на даному сервері! :bangbang:')
-            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
-        await ctx.message.delete()
+
+
+        #     await member.remove_roles(discord.utils.get(member.guild.roles, name='Покараний'))
+        #     embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
+        #     embed.set_thumbnail(url=member.avatar_url)
+        #     embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
+        #     embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
+        #     await ctx.send(embed=embed)
+        # else:
+        #     embed = discord.Embed(color=0xfc5821, title=f':bangbang: Користувач {member.name} не є заглушеним на даному сервері! :bangbang:')
+        #     embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+        #     await ctx.send(embed=embed)
+        # await ctx.message.delete()
 
     @commands.command(pass_context=True, aliases=['del', 'очистити', 'чистити'])
     async def clear(self, ctx, amount):
