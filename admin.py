@@ -96,10 +96,6 @@ class Admin(commands.Cog, name="Info"):
         role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
         role_mod2 = [role.name for role in member.roles][1:]
         case = None
-        await ctx.send(time)
-        numbers1 = [1]
-        numbers2 = [2, 3, 4, 22, 23, 24, 32, 33, 34, 42, 43, 44, 52, 53, 54, 62, 63, 64, 72, 73, 74, 82, 83, 84, 92, 93, 94]
-        await ctx.send(time in numbers1)
         if set(role_mod1).issubset(role_mod2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити модератора серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
@@ -112,6 +108,8 @@ class Admin(commands.Cog, name="Info"):
             await member.remove_roles(*role)
             role = discord.utils.get(member.guild.roles, name='Покараний')
             await member.add_roles(role)
+            numbers1 = [1]
+            numbers2 = [2, 3, 4, 22, 23, 24, 32, 33, 34, 42, 43, 44, 52, 53, 54, 62, 63, 64, 72, 73, 74, 82, 83, 84, 92, 93, 94]
             if reason == None:
                 reason = "<причину блокування не вказано>"
             if time == None:
