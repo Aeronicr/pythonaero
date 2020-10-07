@@ -117,6 +117,7 @@ class Admin(commands.Cog, name="Info"):
         role_owner2 = [role.name for role in member.roles][1:]
         role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
         role_mod2 = [role.name for role in member.roles][1:]
+        role_used = [r for r in ctx.guild.roles if r.name == "Покараний"][0]
         await ctx.send([role.name for role in member.roles][1:])
         if set(role_mod1).issubset(role_mod2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете розглушити модератора серверу! :bangbang:')
@@ -126,7 +127,7 @@ class Admin(commands.Cog, name="Info"):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете розглушити власника серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
-        elif 'Покараний' in [role.name for role in member.roles][1:] == True:
+        elif role_ised.mention != member.top_role.mention:
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Користувач {member.name} не є заглушеним на даному сервері! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
