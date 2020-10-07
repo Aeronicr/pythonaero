@@ -89,6 +89,7 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True)
     @has_permissions(administrator=True, manage_messages=True)
     async def one (self, ctx, member:discord.Member = None, time : int = None, reason=None):
+        await ctx.message.delete()
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
         role_owner1 = [r.name for r in ctx.guild.roles][-1:]
@@ -126,14 +127,14 @@ class Admin(commands.Cog, name="Info"):
             embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} {case}!", value="Уважно прочитайте правила серверу.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
-            await asyncio.sleep(time*60)
-            await member.remove_roles(role)
-            embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
-            embed.set_thumbnail(url=member.avatar_url)
-            embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
-            embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
-        await ctx.message.delete()
+            if time != 0 or time !=None
+                await asyncio.sleep(time*60)
+                await member.remove_roles(role)
+                embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
+                embed.set_thumbnail(url=member.avatar_url)
+                embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
+                embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
+                await ctx.send(embed=embed)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
