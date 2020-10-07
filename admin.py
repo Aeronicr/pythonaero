@@ -116,14 +116,14 @@ class Admin(commands.Cog, name="Info"):
                 reason = "<причину блокування не вказано>"
             if time == None:
                 time = "до розглушення модераторами серверу"
-            elif time in numbers1 = True:
+            elif time in numbers1 == True:
                 case = 'хвилину'
             elif time in numbers2 == True:
                 case = 'хвилини'
             elif time >100:
                 case = 'декілька днів'
-            else:
-                case = 'хвилин'
+            # else:
+            #     case = 'хвилин'
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
             embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} {case}!", value="Уважно прочитайте правила серверу.", inline=False)
