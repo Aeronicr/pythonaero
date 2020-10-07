@@ -96,6 +96,8 @@ class Admin(commands.Cog, name="Info"):
         role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
         role_mod2 = [role.name for role in member.roles][1:]
         case = None
+        numbers1 = [1, 21, 31, 41, 51, 61, 71, 81, 91]
+        numbers2 = [2, 3, 4, 22, 23, 24, 32, 33, 34, 42, 43, 44, 52, 53, 54, 62, 63, 64, 72, 73, 74, 82, 83, 84, 92, 93, 94]
         if set(role_mod1).issubset(role_mod2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити модератора серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
@@ -112,8 +114,14 @@ class Admin(commands.Cog, name="Info"):
                 reason = "<причину блокування не вказано>"
             if time == None:
                 time = "<час блокування не вказано>"
-            elif time == 1:
+            elif time in numbers1 == True:
                 case = 'хвилину'
+            elif time in numbers2 == True:
+                case = 'хвилини'
+            elif time >100:
+                case = 'декілька днів'
+            else:
+                case = 'хвилин'
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
             embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} {case}!", value="Уважно прочитайте правила серверу.", inline=False)
