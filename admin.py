@@ -67,8 +67,16 @@ class Admin(commands.Cog, name="Info"):
         role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
         role_mod2 = [role.name for role in member.roles][1:]
         case = None
-        
-        
+        if set(role_mod1).issubset(role_mod2):
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити модератора серверу! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        elif set(role_owner1).issubset(role_owner2):
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити власника серверу! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        else:
+            await member.remove_roles(*role)
             role = discord.utils.get(member.guild.roles, name='Покараний')
             await member.add_roles(role)
             if reason == None:
@@ -126,7 +134,10 @@ class Admin(commands.Cog, name="Info"):
             await ctx.send(embed=embed)
 
 
-        #     await member.remove_roles(discord.utils.get(member.guild.roles, name='Покараний'))
+        # modRole5 = [r for r in ctx.guild.roles if r.name == "Троляка"][0]
+        # member = ctx.author if not member else member
+        # if modRole5.mention == member.top_role.mention:
+        #     await member.remove_roles(discord.utils.get(member.guild.roles, name='Троляка'))
         #     embed = discord.Embed(color=0x63ff52, title=':white_check_mark: Знято покарання :white_check_mark:')
         #     embed.set_thumbnail(url=member.avatar_url)
         #     embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
