@@ -126,7 +126,7 @@ class Admin(commands.Cog, name="Info"):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете розглушити власника серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
-        elif [role.name for role in member.roles][1:] == "Покараний":
+        elif 'Покараний' in [role.name for role in member.roles][1:] == True:
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Користувач {member.name} не є заглушеним на даному сервері! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
