@@ -97,7 +97,7 @@ class Admin(commands.Cog, name="Info"):
         role_mod2 = [role.name for role in member.roles][1:]
         case = None
         await ctx.send(time)
-        numbers1 = ['1']
+        numbers1 = [1]
         numbers2 = [2, 3, 4, 22, 23, 24, 32, 33, 34, 42, 43, 44, 52, 53, 54, 62, 63, 64, 72, 73, 74, 82, 83, 84, 92, 93, 94]
         await ctx.send(time in numbers1)
         if set(role_mod1).issubset(role_mod2):
