@@ -108,18 +108,17 @@ class Admin(commands.Cog, name="Info"):
             await member.remove_roles(*role)
             role = discord.utils.get(member.guild.roles, name='Покараний')
             await member.add_roles(role)
-            numbers1 = [1]
-            numbers2 = [2, 3, 4, 22, 23, 24, 32, 33, 34, 42, 43, 44, 52, 53, 54, 62, 63, 64, 72, 73, 74, 82, 83, 84, 92, 93, 94]
             if reason == None:
                 reason = "<причину блокування не вказано>"
             if time == None:
-                time = "на час, до розблокування модераторами"
+                time = "на час до розблокування модераторами"
             elif time == 1 or time == 21 or time == 31 or time == 41:
                 case = 'хвилину'
             elif time == 2 or time == 3 or time == 4 or time == 22 or time == 23 or time == 24 or time == 32 or time == 33 or time == 34 or time == 42 or time == 43 or time == 44:
                 case = 'хвилини'
-            elif time >48:
+            elif time > 48:
                 case = 'декілька днів'
+                time = ''
             else:
                 case = 'хвилин'
             embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
