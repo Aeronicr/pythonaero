@@ -7,7 +7,7 @@ import typing
 from typing import Optional
 
 
-class Admin(commands.Cog, name="Info"):
+class Admin(commands.Cog, name="Admin"):
     def __init__(self, bot):
         self.bot = bot
 
@@ -36,10 +36,19 @@ class Admin(commands.Cog, name="Info"):
     @commands.command(pass_context = True , aliases=['кік', 'вигнати'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def kick (self, ctx, member:discord.Member = None, reason = None):
-        modRole3 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
-        modRole4 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
-        if modRole3.mention == member.top_role.mention or modRole4.mention == member.top_role.mention:
-            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете вигнати себе та інших модераторів, а також користувачів, що не є учасниками серверу! :bangbang:')
+        await ctx.message.delete()
+        member = ctx.author if not member else member
+        role = [role for role in member.roles][1:]
+        role_owner1 = [r.name for r in ctx.guild.roles][-1:]
+        role_owner2 = [role.name for role in member.roles][1:]
+        role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
+        role_mod2 = [role.name for role in member.roles][1:]
+        if set(role_mod1).issubset(role_mod2):
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете вигнати модератора серверу! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        elif set(role_owner1).issubset(role_owner2):
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете вигнати власника серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
         else:
@@ -53,7 +62,25 @@ class Admin(commands.Cog, name="Info"):
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
             await ctx.guild.kick(member, reason=reason)
-        await ctx.message.delete()
+
+        # modRole3 = [r for r in ctx.guild.roles if r.name == "Славетний радник"][0]
+        # modRole4 = [r for r in ctx.guild.roles if r.name == "Батя"][0]
+        # if modRole3.mention == member.top_role.mention or modRole4.mention == member.top_role.mention:
+        #     embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете вигнати себе та інших модераторів, а також користувачів, що не є учасниками серверу! :bangbang:')
+        #     embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+        #     await ctx.send(embed=embed)
+        # else:
+            # if reason == None:
+            #     reason = "<причину блокування не вказано>"
+            # message = f"Вас вигнали із серверу {ctx.guild.name} за {reason}"
+            # await member.send(message)
+            # embed = discord.Embed(color=0x730505, title=':no_entry: Застосовано покарання :no_entry:')
+            # embed.set_thumbnail(url=member.avatar_url)
+            # embed.add_field(name=f"Користувача {member} виключено із серверу за {reason}!", value="Сподіваємось це буде уроком для решти.", inline=False)
+            # embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
+            # await ctx.send(embed=embed)
+            # await ctx.guild.kick(member, reason=reason)
+        # await ctx.message.delete()
 
 
     @commands.command(pass_context = True , aliases=['мют', 'заглушити'])
