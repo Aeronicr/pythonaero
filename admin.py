@@ -75,6 +75,7 @@ class Admin(commands.Cog, name="Admin"):
     @has_permissions(administrator=True, manage_messages=True)
     async def mute (self, ctx, member:discord.Member = None, time : int = None, reason=None):
         await ctx.message.delete()
+        await ctx.send(member.top_role)
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
         role_owner1 = [r.name for r in ctx.guild.roles][-1:]
