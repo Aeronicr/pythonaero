@@ -85,15 +85,15 @@ class Admin(commands.Cog, name="Admin"):
         if set(role_mod1).issubset(role_mod2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити модератора серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            await(await ctx.send(embed=embed)).delete(delay=5)
+            await(await ctx.send(embed=embed)).delete(delay=50)
         elif set(role_owner1).issubset(role_owner2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити власника серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
+            await(await ctx.send(embed=embed)).delete(delay=50)
         elif [r for r in ctx.guild.roles if r.name == "Покараний"][0] == member.top_role:
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити користувача, який вже є заглушеним! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
+            await(await ctx.send(embed=embed)).delete(delay=50)
         else:
             await member.remove_roles(*role)
             role = discord.utils.get(member.guild.roles, name='Покараний')
@@ -116,7 +116,7 @@ class Admin(commands.Cog, name="Admin"):
             embed.set_thumbnail(url=member.avatar_url)
             embed.add_field(name=f"Користувача {member} заглушено за {reason} на {time} {case}!", value="Уважно прочитайте правила серверу.", inline=False)
             embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
+            await(await ctx.send(embed=embed)).delete(delay=50)
             if time != 0 or time !=None:
                 await asyncio.sleep(time*60)
                 await member.remove_roles(role)
@@ -124,7 +124,7 @@ class Admin(commands.Cog, name="Admin"):
                 embed.set_thumbnail(url=member.avatar_url)
                 embed.add_field(name=f"Користувача {member} розглушено", value="Сподіваємось ви усвідомили свою помилку.", inline=False)
                 embed.set_footer(text=f"Викликано {ctx.author}", icon_url=ctx.author.avatar_url)
-                await ctx.send(embed=embed)
+                await(await ctx.send(embed=embed))..delete(delay=70)
 
     @commands.command(pass_context = True , aliases=['анмют', 'розглушити'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
