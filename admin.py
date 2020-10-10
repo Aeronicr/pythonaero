@@ -85,7 +85,7 @@ class Admin(commands.Cog, name="Admin"):
         if set(role_mod1).issubset(role_mod2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити модератора серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed).delete(delay=5)
+            await(await ctx.send(embed=embed)).delete(delay=5)
         elif set(role_owner1).issubset(role_owner2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити власника серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
