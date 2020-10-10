@@ -75,7 +75,6 @@ class Admin(commands.Cog, name="Admin"):
     @has_permissions(administrator=True, manage_messages=True)
     async def mute (self, ctx, member:discord.Member = None, time : int = None, reason=None):
         await ctx.message.delete()
-        await ctx.send(member.top_role)
         member = ctx.author if not member else member
         role = [role for role in member.roles][1:]
         role_owner1 = [r.name for r in ctx.guild.roles][-1:]
@@ -89,6 +88,10 @@ class Admin(commands.Cog, name="Admin"):
             await ctx.send(embed=embed)
         elif set(role_owner1).issubset(role_owner2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити власника серверу! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+        elif [r for r in ctx.guild.roles if r.name == "Покараний"][0] == member.top_role:
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити користувача, який вже є заглушеним! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)
         else:
