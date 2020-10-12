@@ -19,13 +19,15 @@ class Admin(commands.Cog, name="Admin"):
         if status == '+':
             self.name_role = role
             if get(ctx.guild.roles, name= role):
-                await ctx.send("Роль вже існує на сервері")
+                embed = discord.Embed(color=0xfc5821, title=f':bangbang: Роль вже інує на сервері! :bangbang:')
+                embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+                await(await ctx.send(embed=embed)).delete(delay=50)
             else:
                 perms = discord.Permissions(send_messages=False, read_messages=True, read_message_history=True)
                 if color == None:
                     color = '000000'
                 await ctx.guild.create_role(name=self.name_role, permissions=perms, colour=discord.Colour(int(color, 16)))
-                embed = discord.Embed(color=0xfc5821, title=f'Створено роль {role}')
+                embed = discord.Embed(color=0xfc5821, title=f':white_check_mark: Створено роль {role} :white_check_mark:')
                 embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
                 await(await ctx.send(embed=embed)).delete(delay=50)
         else:
@@ -34,7 +36,7 @@ class Admin(commands.Cog, name="Admin"):
             for role in guild.roles:
                 if role.name == delrole: 
                     await role.delete()
-                    embed = discord.Embed(color=0xfc5821, title=f'Видалено роль {delrole}')
+                    embed = discord.Embed(color=0xfc5821, title=f':negative_squared_cross_mark: Видалено роль {delrole} :negative_squared_cross_mark:')
                     embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
                     await(await ctx.send(embed=embed)).delete(delay=50)
 
