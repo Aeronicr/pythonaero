@@ -22,10 +22,13 @@ class Admin(commands.Cog, name="Admin"):
                 await ctx.send("Роль вже існує на сервері")
             else:
                 perms = discord.Permissions(send_messages=False, read_messages=True, read_message_history=True)
-                await ctx.guild.create_role(name=self.name_role, permissions=perms, colour=discord.Colour(int('ffffff', 16)))
-                embed = discord.Embed(color=0xfc5821, title=f'Створено роль {role}')
-                embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
-                await(await ctx.send(embed=embed)).delete(delay=50)
+                if color == None:
+                    color = '000000'
+                else:
+                    await ctx.guild.create_role(name=self.name_role, permissions=perms, colour=discord.Colour(int(color, 16)))
+                    embed = discord.Embed(color=0xfc5821, title=f'Створено роль {role}')
+                    embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+                    await(await ctx.send(embed=embed)).delete(delay=50)
         else:
             delrole = role
             guild = ctx.guild
