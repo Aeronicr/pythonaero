@@ -23,6 +23,8 @@ class Admin(commands.Cog, name="Admin"):
             embed = discord.Embed(color=0xfc5821, title=f'Створено роль {role}')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await(await ctx.send(embed=embed)).delete(delay=50)
+            role = discord.utils.get(member.guild.roles, name=role)
+            await ctx.send(role)
 
     @commands.command(pass_context = True , aliases=['бан', 'заблокувати'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
