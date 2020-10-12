@@ -27,7 +27,14 @@ class Admin(commands.Cog, name="Admin"):
                 await(await ctx.send(embed=embed)).delete(delay=50)
                 await ctx.send(role)
         else:
-            await role.delete()
+            delrole = role
+            guild = ctx.guild
+
+            for role in guild.roles:
+                if role.name == delrole:
+                    await ctx.send(delrole)     
+                    await role.delete()
+                    await ctx.send(f'The role {delrole} has been created!')
 
     @commands.command(pass_context = True , aliases=['бан', 'заблокувати'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
