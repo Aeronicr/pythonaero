@@ -14,12 +14,12 @@ class Admin(commands.Cog, name="Admin"):
 
     @commands.command(pass_context = True , aliases=['адмін', 'mod', 'модер'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
-    async def admin(ctx, role=None):
-        if get(ctx.guild.roles, name="Покараний"):
+    async def admin(self, ctx, role=None):
+        if get(ctx.guild.roles, name= role):
             await ctx.send("Роль вже існує на сервері")
         else:
             perms = discord.Permissions(send_messages=False, read_messages=True, read_message_history=True)
-            await ctx.guild.create_role(name="Покараний", permissions=perms, colour=discord.Colour(0x2e0404))
+            await ctx.guild.create_role(name=role, permissions=perms, colour=discord.Colour(0x2e0404))
             embed = discord.Embed(color=0xfc5821, title=f'Створено роль {role}')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await(await ctx.send(embed=embed)).delete(delay=50)
