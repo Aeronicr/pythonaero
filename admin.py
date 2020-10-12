@@ -23,7 +23,7 @@ class Admin(commands.Cog, name="Admin"):
             else:
                 perms = discord.Permissions(send_messages=False, read_messages=True, read_message_history=True)
                 if color == None:
-                    color = '000000'
+                    color = '322B6C'
                 else:
                     await ctx.guild.create_role(name=self.name_role, permissions=perms, colour=discord.Colour(int(color, 16)))
                     embed = discord.Embed(color=0xfc5821, title=f'Створено роль {role}')
