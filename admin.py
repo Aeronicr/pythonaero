@@ -15,7 +15,8 @@ class Admin(commands.Cog, name="Admin"):
     @commands.command(pass_context = True , aliases=['адмін', 'mod', 'модер'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def admin(self, ctx, role=None):
-        global name_role = role
+        name_role = role
+        global name_role
         if get(ctx.guild.roles, name= role):
             await ctx.send("Роль вже існує на сервері")
         else:
