@@ -27,7 +27,7 @@ class Admin(commands.Cog, name="Admin"):
                 await(await ctx.send(embed=embed)).delete(delay=50)
                 await ctx.send(role)
         else:
-            await ctx.delete_role(role)
+            await role.delete()
 
     @commands.command(pass_context = True , aliases=['бан', 'заблокувати'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
