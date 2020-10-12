@@ -15,15 +15,15 @@ class Admin(commands.Cog, name="Admin"):
     @commands.command(pass_context = True , aliases=['адмін', 'mod', 'модер'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def admin(self, ctx, role=None):
+        global name_role = role
         if get(ctx.guild.roles, name= role):
             await ctx.send("Роль вже існує на сервері")
         else:
             perms = discord.Permissions(send_messages=False, read_messages=True, read_message_history=True)
-            await ctx.guild.create_role(name=role, permissions=perms, colour=discord.Colour(0x2e0404))
+            await ctx.guild.create_role(name=name_role, permissions=perms, colour=discord.Colour(0x2e0404))
             embed = discord.Embed(color=0xfc5821, title=f'Створено роль {role}')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await(await ctx.send(embed=embed)).delete(delay=50)
-            role = discord.utils.get(member.guild.roles, name=role)
             await ctx.send(role)
 
     @commands.command(pass_context = True , aliases=['бан', 'заблокувати'])
@@ -105,13 +105,13 @@ class Admin(commands.Cog, name="Admin"):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити власника серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await(await ctx.send(embed=embed)).delete(delay=50)
-        elif [r for r in ctx.guild.roles if r.name == "Покараний"][0] == member.top_role:
+        elif [r for r in ctx.guild.roles if r.name == name_role][0] == member.top_role:
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете заглушити користувача, який вже є заглушеним! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
             await(await ctx.send(embed=embed)).delete(delay=50)
         else:
             await member.remove_roles(*role)
-            role = discord.utils.get(member.guild.roles, name='Покараний')
+            role = discord.utils.get(member.guild.roles, name=name_role)
             await member.add_roles(role)
             if reason == None:
                 reason = "<причину блокування не вказано>"
@@ -151,7 +151,7 @@ class Admin(commands.Cog, name="Admin"):
         role_owner2 = [role.name for role in member.roles][1:]
         role_mod1 = [r.name for r in ctx.guild.roles][-2:-1]
         role_mod2 = [role.name for role in member.roles][1:]
-        role_used = [r for r in ctx.guild.roles if r.name == "Покараний"][0]
+        role_used = [r for r in ctx.guild.roles if r.name == name_role][0]
         if set(role_mod1).issubset(role_mod2):
             embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете розглушити модератора серверу! :bangbang:')
             embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
