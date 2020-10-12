@@ -15,6 +15,7 @@ class Admin(commands.Cog, name="Admin"):
     @commands.command(pass_context = True , aliases=['адмін', 'mod', 'модер'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def admin(self, ctx, status = None, role=None):
+        await ctx.message.delete()
         if status == '+':
             self.name_role = role
             if get(ctx.guild.roles, name= role):
@@ -25,16 +26,15 @@ class Admin(commands.Cog, name="Admin"):
                 embed = discord.Embed(color=0xfc5821, title=f'Створено роль {role}')
                 embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
                 await(await ctx.send(embed=embed)).delete(delay=50)
-                await ctx.send(role)
         else:
             delrole = role
             guild = ctx.guild
-
             for role in guild.roles:
-                if role.name == delrole:
-                    await ctx.send(delrole)     
+                if role.name == delrole: 
                     await role.delete()
-                    await ctx.send(f'The role {delrole} has been created!')
+                    embed = discord.Embed(color=0xfc5821, title=f'Видалено роль {delrole}')
+                    embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+                    await(await ctx.send(embed=embed)).delete(delay=50)
 
     @commands.command(pass_context = True , aliases=['бан', 'заблокувати'])
     @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
