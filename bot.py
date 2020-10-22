@@ -28,23 +28,13 @@ if __name__ == '__main__':
 
 @bot.event
 async def on_ready():
-    conn = sqlite3.connect("Aerobot_DB.db")
-    cursor = conn.cursor()
     activity = discord.Game(name="Захоплення світу")
     channel = bot.get_channel(755473910115336192)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("Бота перезавантажено")
-    for guild in bot.guilds:#т.к. бот для одного сервера, то и цикл выводит один сервер
-        print(guild.id)#вывод id сервера
-        serv=guild#без понятия зачем это
-        for member in guild.members:#цикл, обрабатывающий список участников
-            cursor.execute(f"SELECT guild_id FROM Guilds where guild_id={member.id}")#проверка, существует ли участник в БД
-            if cursor.fetchone()==None:#Если не существует
-                cursor.execute(f"INSERT INTO Guilds VALUES ({member.id})")#вводит все данные об участнике в БД
-            else:#если существует
-                pass
-            conn.commit()#применение изменений в БД
-
+    await channel.send(bot.guild.id)
+    conn = sqlite3.connect("Aerobot_DB.db")
+    cursor = conn.cursor()
 @bot.event
 async def on_guild_join(guild):
     embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
