@@ -42,7 +42,8 @@ async def on_ready():
             cursor.execute(f"INSERT INTO Guilds VALUES ({guild.id})")
         else:
             pass
-            conn.commit()
+        cursor.execute(f"SELECT guild_id FROM Guilds")
+        conn.commit()
 
 @bot.event
 async def on_guild_join(guild):
