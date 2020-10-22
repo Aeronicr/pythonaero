@@ -5,6 +5,7 @@ import os
 from discord.ext.commands import has_permissions
 from discord.utils import get
 from discord import Permissions
+import sqlite3
 
 custom_prefixes = {}
 default_prefixes = ['.']
@@ -27,12 +28,19 @@ if __name__ == '__main__':
 
 @bot.event
 async def on_ready():
+    conn = sqlite3.connect("Aerobot_DB.db")
+    cursor = conn.cursor()
     activity = discord.Game(name="Захоплення світу")
     channel = bot.get_channel(755473910115336192)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("Бота перезавантажено")
-    # embed = discord.Embed(color=0xfc5821, title=f':robot: AeroBot долучився до серверу та готовий працювати!:robot: ')
-    # await channel.send(embed=embed)
+    for guild in bot.guilds:
+        cursor.execute(f"SELECT guild_id FROM Guilds where id={guild.id}")
+        if cursor.fetchone()==None:
+            cursor.execute(f"INSERT INTO Guilds VALUES ({guild.id}, '<@{guild.owner_id}>', '{guild.name}'")
+        else:
+            pass
+            conn.commit()
 
 @bot.event
 async def on_guild_join(guild):

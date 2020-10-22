@@ -187,22 +187,28 @@ class Admin(commands.Cog, name="Admin"):
             await(await ctx.send(embed=embed)).delete(delay=50)
 
     @commands.command(pass_context=True, aliases=['del', 'очистити', 'чистити'])
+    @has_permissions(administrator=True, manage_messages=True, manage_roles=True)
     async def clear(self, ctx, amount):
         channel = ctx.message.channel
-        messages = []
-        amount = int(amount)
-        async for message in channel.history(limit=amount):
-                messages.append(message)
-
-        await channel.delete_messages(messages)
-        while amount in range (1,5) or amount in range (21,25) or amount in range (31,35) or amount in range (41,45) or amount in range (51,55) or amount in range (61,65) or amount in range (71,75) or amount in range (81,85) or amount in range (91,95):
-            await(await ctx.send(f'{amount} повідомлення видалено.')).delete(delay=15)
-            break
-        while amount in range(5,21) or amount in range(25,31) or amount in range(35,41) or amount in range(45,51) or amount in range(55,61) or amount in range(65,71) or amount in range(75,81) or amount in range(85,91) or amount in range(95,101):
-            await(await ctx.send(f'{amount} повідомлень видалено.')).delete(delay=15)
-            break
         if amount > 100:
-            await(await ctx.send(f'Повідомлень видалено: {amount}.')).delete(delay=15)
+            embed = discord.Embed(color=0xfc5821, title=f':bangbang: Ви не можете видалити більше 100 повідомлень! :bangbang:')
+            embed.set_footer(text=f"Системне повідомлення для {ctx.author}", icon_url=ctx.author.avatar_url)
+            await(await ctx.send(embed=embed)).delete(delay=50)
+        else:
+            messages = []
+            amount = int(amount)
+            async for message in channel.history(limit=amount):
+                    messages.append(message)
+
+            await channel.delete_messages(messages)
+            while amount in range (1,5) or amount in range (21,25) or amount in range (31,35) or amount in range (41,45) or amount in range (51,55) or amount in range (61,65) or amount in range (71,75) or amount in range (81,85) or amount in range (91,95):
+                await(await ctx.send(f'{amount} повідомлення видалено.')).delete(delay=15)
+                break
+            while amount in range(5,21) or amount in range(25,31) or amount in range(35,41) or amount in range(45,51) or amount in range(55,61) or amount in range(65,71) or amount in range(75,81) or amount in range(85,91) or amount in range(95,101):
+                await(await ctx.send(f'{amount} повідомлень видалено.')).delete(delay=15)
+                break
+            if amount > 100:
+                await(await ctx.send(f'Повідомлень видалено: {amount}.')).delete(delay=15)
         
 
 
