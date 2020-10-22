@@ -38,9 +38,9 @@ async def on_ready():
         print(guild.id)#вывод id сервера
         serv=guild#без понятия зачем это
         for member in guild.members:#цикл, обрабатывающий список участников
-            cursor.execute(f"SELECT guild_id FROM users where guild_id={member.id}")#проверка, существует ли участник в БД
+            cursor.execute(f"SELECT guild_id FROM Guilds where guild_id={member.id}")#проверка, существует ли участник в БД
             if cursor.fetchone()==None:#Если не существует
-                cursor.execute(f"INSERT INTO users VALUES ({member.id})")#вводит все данные об участнике в БД
+                cursor.execute(f"INSERT INTO Guilds VALUES ({member.id})")#вводит все данные об участнике в БД
             else:#если существует
                 pass
             conn.commit()#применение изменений в БД
