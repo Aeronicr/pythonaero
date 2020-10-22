@@ -32,7 +32,7 @@ async def on_ready():
     channel = bot.get_channel(755473910115336192)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("Бота перезавантажено")
-    await channel.send(bot.guild.id)
+    await channel.send(bot.guilds.id)
     conn = sqlite3.connect("Aerobot_DB.db")
     cursor = conn.cursor()
 @bot.event
