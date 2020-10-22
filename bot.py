@@ -34,8 +34,8 @@ async def on_ready():
     channel = bot.get_channel(755473910115336192)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     await channel.send("Бота перезавантажено")
-    channel.send(f"'{guild.id}', '{guild.owner_id}', '{guild.name}'")
     for guild in bot.guilds:
+        channel.send(f"{guild.id}")
         cursor.execute(f"SELECT guild_id FROM Guilds where guild_id={guild.id}")
         if cursor.fetchone()==None:
             cursor.execute(f"INSERT INTO Guilds VALUES ({guild.id}, '{guild.owner_id}', '{guild.name}'")
