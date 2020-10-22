@@ -37,7 +37,7 @@ async def on_ready():
     for guild in bot.guilds:
         cursor.execute(f"SELECT guild_id FROM Guilds where guild_id={guild.id}")
         if cursor.fetchone()==None:
-            cursor.execute(f"INSERT INTO Guilds VALUES ({guild.id}, {guild.owner_id}, {guild.name}")
+            cursor.execute(f"INSERT INTO Guilds VALUES ('{guild.id}', '{guild.owner_id}', '{guild.name}'")
         else:
             pass
             conn.commit()
