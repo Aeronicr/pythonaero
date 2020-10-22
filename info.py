@@ -160,7 +160,7 @@ class Info(commands.Cog, name="Info"):
                 embed.add_field(name=f"Вітаю тебе, @{member} на славетному сервері Славенія.", value="Сподіваюсь ти станеш частинкою даної спільноти. Перш ніж перейти до ближчого знайомства, пропоную тобі переглянути інформацію про даний сервер та правила у #славетний-закон та #славетні правила. Уважно прочитай усе, лише уважні отримають доступ до усіх каналів :)", inline=False)
                 embed.set_footer(text=f"Приємного спілкування {member}", icon_url='https://i.ibb.co/PMKLn81/hi.png')
                 await channel.send(embed=embed)
-                await channel.send(f'{member.guild.name}) 
+                await channel.send(f'{member.guild.name}') 
 
     @commands.Cog.listener()
     async def on_member_remove(self,member):
