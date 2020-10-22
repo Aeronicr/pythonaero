@@ -43,7 +43,7 @@ async def on_ready():
         else:
             pass
         cursor.execute(f"SELECT guild_id FROM Guilds")
-        conn.commit()
+    conn.commit()
 
 @bot.event
 async def on_guild_join(guild):
